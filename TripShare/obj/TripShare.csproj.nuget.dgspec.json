@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Adam PRO-ROB\\source\\repos\\TripShare\\TripShare\\TripShare.csproj": {}
+    "C:\\Users\\Adam PRO-ROB\\source\\gitrepos\\GitTripShare\\TripShare\\TripShare.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Adam PRO-ROB\\source\\repos\\TripShare\\TripShare\\TripShare.csproj": {
+    "C:\\Users\\Adam PRO-ROB\\source\\gitrepos\\GitTripShare\\TripShare\\TripShare.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Adam PRO-ROB\\source\\repos\\TripShare\\TripShare\\TripShare.csproj",
+        "projectUniqueName": "C:\\Users\\Adam PRO-ROB\\source\\gitrepos\\GitTripShare\\TripShare\\TripShare.csproj",
         "projectName": "TripShare",
-        "projectPath": "C:\\Users\\Adam PRO-ROB\\source\\repos\\TripShare\\TripShare\\TripShare.csproj",
+        "projectPath": "C:\\Users\\Adam PRO-ROB\\source\\gitrepos\\GitTripShare\\TripShare\\TripShare.csproj",
         "packagesPath": "C:\\Users\\Adam PRO-ROB\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Adam PRO-ROB\\source\\repos\\TripShare\\TripShare\\obj\\",
+        "outputPath": "C:\\Users\\Adam PRO-ROB\\source\\gitrepos\\GitTripShare\\TripShare\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

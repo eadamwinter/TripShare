@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ELttDHnALjRG48G+nKc2a5ZHHjJySngzK2KBsN8WuOp+M2nHueyro7VFKs4S3dZGllYBN7ivBpvsKEdnVTGB1Q==",
+  "dgSpecHash": "0BolxQTUZJA7yESSFNTyhFul37y0O+I4hAFHr3wS1HWUIz1n78WZ77unuTNy95tFh8vM3QJnJpmE1Br+pyz8Vg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Adam PRO-ROB\\source\\repos\\TripShare\\Testy\\Testy.csproj",
+  "projectFilePath": "C:\\Users\\Adam PRO-ROB\\source\\gitrepos\\GitTripShare\\Testy\\Testy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Adam PRO-ROB\\.nuget\\packages\\microsoft.codecoverage\\16.4.0\\microsoft.codecoverage.16.4.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",

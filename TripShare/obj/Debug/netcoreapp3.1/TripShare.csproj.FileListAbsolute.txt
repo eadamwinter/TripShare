@@ -7,3 +7,12 @@ C:\Users\Adam PRO-ROB\source\repos\TripShare\TripShare\obj\Debug\netcoreapp3.1\T
 C:\Users\Adam PRO-ROB\source\repos\TripShare\TripShare\obj\Debug\netcoreapp3.1\TripShare.csproj.CoreCompileInputs.cache
 C:\Users\Adam PRO-ROB\source\repos\TripShare\TripShare\obj\Debug\netcoreapp3.1\TripShare.dll
 C:\Users\Adam PRO-ROB\source\repos\TripShare\TripShare\obj\Debug\netcoreapp3.1\TripShare.pdb
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\TripShare\bin\Debug\netcoreapp3.1\TripShare.deps.json
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\TripShare\bin\Debug\netcoreapp3.1\TripShare.dll
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\TripShare\bin\Debug\netcoreapp3.1\TripShare.pdb
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\TripShare\obj\Debug\netcoreapp3.1\TripShare.csprojAssemblyReference.cache
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\TripShare\obj\Debug\netcoreapp3.1\TripShare.AssemblyInfoInputs.cache
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\TripShare\obj\Debug\netcoreapp3.1\TripShare.AssemblyInfo.cs
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\TripShare\obj\Debug\netcoreapp3.1\TripShare.csproj.CoreCompileInputs.cache
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\TripShare\obj\Debug\netcoreapp3.1\TripShare.dll
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\TripShare\obj\Debug\netcoreapp3.1\TripShare.pdb

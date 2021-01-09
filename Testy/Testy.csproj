@@ -16,8 +16,4 @@
     <ProjectReference Include="..\TripShare\TripShare.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Calculations\" />
-  </ItemGroup>
-
 </Project>

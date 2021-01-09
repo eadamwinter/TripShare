@@ -11,7 +11,7 @@ namespace TripShare
         {
             List<Expense> expenses = new List<Expense>();
             expenses.Add(new Expense(1, "Adam", 15.40));
-            expenses.Add(new Expense(1, "Igor", 12.20));
+            expenses.Add(new Expense(1, "Igor", 13.20));
             return expenses;
         }
     }

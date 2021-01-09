@@ -4601,11 +4601,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Adam PRO-ROB\\source\\repos\\TripShare\\Testy\\Testy.csproj",
+      "projectUniqueName": "C:\\Users\\Adam PRO-ROB\\source\\gitrepos\\GitTripShare\\Testy\\Testy.csproj",
       "projectName": "Testy",
-      "projectPath": "C:\\Users\\Adam PRO-ROB\\source\\repos\\TripShare\\Testy\\Testy.csproj",
+      "projectPath": "C:\\Users\\Adam PRO-ROB\\source\\gitrepos\\GitTripShare\\Testy\\Testy.csproj",
       "packagesPath": "C:\\Users\\Adam PRO-ROB\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Adam PRO-ROB\\source\\repos\\TripShare\\Testy\\obj\\",
+      "outputPath": "C:\\Users\\Adam PRO-ROB\\source\\gitrepos\\GitTripShare\\Testy\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -4626,8 +4626,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Adam PRO-ROB\\source\\repos\\TripShare\\TripShare\\TripShare.csproj": {
-              "projectPath": "C:\\Users\\Adam PRO-ROB\\source\\repos\\TripShare\\TripShare\\TripShare.csproj"
+            "C:\\Users\\Adam PRO-ROB\\source\\gitrepos\\GitTripShare\\TripShare\\TripShare.csproj": {
+              "projectPath": "C:\\Users\\Adam PRO-ROB\\source\\gitrepos\\GitTripShare\\TripShare\\TripShare.csproj"
             }
           }
         }
