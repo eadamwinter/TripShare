@@ -6,12 +6,12 @@ namespace TripShare
 {
     public class Calculation
     {
-        public byte NumberOfMembers { get; set; }
-        public List<Expense> expenses { get; set; }
-        public Calculation(List<Expense> expenses, byte numberOfMembers)
+        public TableInfo tableInfo { get; set; }
+        public IEnumerable<Expense> expenses { get; set; }
+        public Calculation(List<Expense> expenses, TableInfo tableInfo)
         {
             this.expenses = expenses;
-            NumberOfMembers = numberOfMembers;
+            this.tableInfo = tableInfo;
         }
 
         public double CalculateEqualExpense()
@@ -22,7 +22,7 @@ namespace TripShare
                 result += expense.wydatek;
 
             }
-            result /= NumberOfMembers;
+            result /= tableInfo.NumberOfMembers;
             return result;
         }
     }

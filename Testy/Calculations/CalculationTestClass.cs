@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using TripShare;
+using System.Collections.Generic;
 
 namespace Testy.Calculations
 {
@@ -14,10 +15,13 @@ namespace Testy.Calculations
         public void MakingPrymitiveCalculation()
         {
             //Arrange
-            byte numberOfMembers = 2;
-            var mockData = new MockExpenseRepository();
-            var repo = mockData.GetAllExpenses();
-            Calculation calculation = new Calculation(repo, numberOfMembers);
+            ITableRepository tableRepository = new MockTableRepository();
+            TableInfo tableInfo = tableRepository.GetInformationAboutTable();
+
+            IExpenseRepository mockData = new MockExpenseRepository();
+            List<Expense> repo = mockData.GetAllExpenses();
+
+            Calculation calculation = new Calculation(repo, tableInfo);
 
             //Act
             var result = calculation.CalculateEqualExpense();
