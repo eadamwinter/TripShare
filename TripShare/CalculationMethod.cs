@@ -16,7 +16,7 @@ namespace TripShare
 
             foreach(var expense in calculation.expenses)
             {
-                decimal average = expense.Amount / expense.NumberOfMembersInvolved;
+                decimal average = expense.Amount / (expense.NumberOfMembersInvolved+1);
 
                 for(byte i=0; i<expense.NumberOfMembersInvolved; i++)
                 {

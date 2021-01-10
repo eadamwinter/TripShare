@@ -36,7 +36,7 @@ namespace Testy.Calculations
             
         }
         [Test]
-        public void CreateWho_whomHomMuchDictionary()
+        public void DictionaryTest_EverybodyInvolved()
         {
             //Arrange
             ICalculationMethod calculationMethod = new CalculationMethod();
@@ -51,12 +51,38 @@ namespace Testy.Calculations
             expecteddict.Add("Adam_Heniek", 8.10m);
             expecteddict.Add("Igor_Heniek", 8.10m);
 
+            var firstvalue = dict["Igor_Heniek"];
+
 
             //Assert
             Assert.IsNotNull(dict);
             Assert.AreEqual(expecteddict.Count, dict.Count);
             Assert.Contains("Igor_Adam", dict.Keys);
-            //Assert.AreEqual(expecteddict, dict);
+            Assert.AreEqual(8.10m, firstvalue);
+        }
+
+        [Test]
+        public void DictionaryTest_OnePersonInvolved()
+        {
+            //Arrange
+            List<Expense> expenses = new List<Expense>();
+            expenses.Add(new Expense(1, "Adam", 12.60m, new List<string>() { "Igor" }));
+
+            ICalculationMethod calculationMethod = new CalculationMethod();
+
+            Calculation calculation = new Calculation(expenses, tableInfo, calculationMethod);
+
+            //Act
+            var dict = calculation.CreateMemberExpenseDictionary();
+            var expecteddict = new Dictionary<string, decimal>() { { "Igor_Adam", 6.30m } };
+
+
+            //Assert
+            Assert.IsNotNull(dict);
+            Assert.AreEqual(expecteddict.Count, dict.Count);
+            Assert.Contains("Igor_Adam", dict.Keys);
+            Assert.Contains(6.30m, dict.Values);
+
         }
         [Test]
         public void CreateStringForDictTest()
@@ -73,7 +99,6 @@ namespace Testy.Calculations
 
             //Assert
             Assert.AreEqual(expectedString, singleStringForDict);
-
         }
     }
 }
