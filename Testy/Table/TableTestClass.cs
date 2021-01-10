@@ -21,7 +21,7 @@ namespace Testy.Table
 
             //Assert
             Assert.IsNotNull(tableInfo);
-            Assert.AreEqual(2, tableInfo.NumberOfMembers);
+            Assert.AreEqual(3, tableInfo.NumberOfMembers);
 
         }
     }

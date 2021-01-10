@@ -6,6 +6,6 @@ namespace TripShare
 {
     public interface ICalculationMethod
     {
-        Dictionary<string, double> CalculateMembersExpenses(Calculation calculation);
+        Dictionary<string, decimal> CalculateMembersExpenses(Calculation calculation);
     }
 }

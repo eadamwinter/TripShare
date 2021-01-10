@@ -6,9 +6,18 @@ namespace Testy.Calculations
 {
     public class CalculationTestClass
     {
+        public TableInfo tableInfo { get; set; } 
+        public List<Expense> repo { get; set; }
+
+
         [SetUp]
         public void Setup()
         {
+            ITableRepository tableRepository = new MockTableRepository();
+            tableInfo = tableRepository.GetInformationAboutTable();
+
+            IExpenseRepository mockData = new MockExpenseRepository();
+            repo = mockData.GetAllExpenses();
         }
 
         [Test]
@@ -17,64 +26,54 @@ namespace Testy.Calculations
             //Arrange
             ICalculationMethod calculationMethod = new CalculationMethod();
 
-            ITableRepository tableRepository = new MockTableRepository();
-            TableInfo tableInfo = tableRepository.GetInformationAboutTable();
-
-            IExpenseRepository mockData = new MockExpenseRepository();
-            List<Expense> repo = mockData.GetAllExpenses();
-
             Calculation calculation = new Calculation(repo, tableInfo, calculationMethod);
 
             //Act
             var result = calculation.CalculateEqualExpense();
 
             //Assert
-            Assert.AreEqual(14.3, result);
+            Assert.AreEqual(14.35, result);
             
         }
         [Test]
-        public void CreatePrymitiveDictionary()
+        public void CreateWho_whomHomMuchDictionary()
         {
             //Arrange
             ICalculationMethod calculationMethod = new CalculationMethod();
-
-            ITableRepository tableRepository = new MockTableRepository();
-            TableInfo tableInfo = tableRepository.GetInformationAboutTable();
-
-            IExpenseRepository mockData = new MockExpenseRepository();
-            List<Expense> repo = mockData.GetAllExpenses();
 
             Calculation calculation = new Calculation(repo, tableInfo, calculationMethod);
 
             //Act
             var dict = calculation.CreateMemberExpenseDictionary();
-            var expecteddict = new Dictionary<string, double>() { { "Adam", 15.40 }, { "Igor", 13.20 } };
+            var expecteddict = new Dictionary<string, decimal>() { { "Igor_Adam", 4.20m }, { "Heniek_Adam", 4.20m } };
+            expecteddict.Add("Adam_Igor", 2.05m);
+            expecteddict.Add("Heniek_Igor", 2.05m);
+            expecteddict.Add("Adam_Heniek", 8.10m);
+            expecteddict.Add("Igor_Heniek", 8.10m);
+
 
             //Assert
             Assert.IsNotNull(dict);
-            Assert.AreEqual(expecteddict, dict);
+            Assert.AreEqual(expecteddict.Count, dict.Count);
+            Assert.Contains("Igor_Adam", dict.Keys);
+            //Assert.AreEqual(expecteddict, dict);
         }
         [Test]
-        public void CreatePrymitiveDebts()
+        public void CreateStringForDictTest()
         {
             //Arrange
-            ICalculationMethod calculationMethod = new CalculationMethod();
-
-            ITableRepository tableRepository = new MockTableRepository();
-            TableInfo tableInfo = tableRepository.GetInformationAboutTable();
-
-            IExpenseRepository mockData = new MockExpenseRepository();
-            List<Expense> repo = mockData.GetAllExpenses();
+            CalculationMethod calculationMethod = new CalculationMethod();
 
             Calculation calculation = new Calculation(repo, tableInfo, calculationMethod);
 
             //Act
-            var wynik = calculation.CalculatePrymitiveDebts();
-            
+            var exp = repo[0];
+            string singleStringForDict = calculationMethod.CreateStringForDictionary(exp, 0);
+            string expectedString = "Igor_Adam";
 
             //Assert
-            Assert.IsNotNull(wynik);
-            Assert.AreEqual("alejaja", wynik);
+            Assert.AreEqual(expectedString, singleStringForDict);
+
         }
     }
 }

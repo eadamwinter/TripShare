@@ -1,4 +1,6 @@
 using NUnit.Framework;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TripShare;
 
 namespace Testy
@@ -16,16 +18,19 @@ namespace Testy
             //Arrange
             byte NumerTabeli = 1;
             string imie = "Adam";
-            double wydatek = 15.40;
-
+            decimal wydatek = 15.40m;
+            List<string> mocklista = new List<string>();
 
             //Act
-            Expense expense = new Expense(NumerTabeli, imie, wydatek);
+            Expense expense = new Expense(NumerTabeli, imie, wydatek, mocklista);
 
             //Assert
-            Assert.AreEqual(1, expense.idTabeli);
-            Assert.AreEqual("Adam", expense.imie);
-            Assert.AreEqual(15.4, expense.wydatek);
+            Assert.AreEqual(1, expense.IdTable);
+            Assert.AreEqual("Adam", expense.Name);
+            Assert.AreEqual(15.4, expense.Amount);
+
+            Assert.IsNotNull(expense.TimeOfExpense);
+            Assert.IsTrue(Regex.IsMatch(expense.TimeOfExpense, @"\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2}"));
         }
 
         [Test]
@@ -40,8 +45,8 @@ namespace Testy
             var expense2 = expenses[1];
 
             //Assert
-            Assert.AreEqual(1, expense1.idTabeli);
-            Assert.AreEqual("Igor", expense2.imie);
+            Assert.AreEqual(1, expense1.IdTable);
+            Assert.AreEqual("Igor", expense2.Name);
         }
     }
 }
