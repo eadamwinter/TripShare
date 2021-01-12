@@ -4,9 +4,8 @@ using System.Text;
 
 namespace TripShare
 {
-    public interface ICalculationMethod
+    public interface IOptymizer
     {
-        Dictionary<string, decimal> CalculateMembersExpenses(Calculation calculation);
         Dictionary<string, decimal> OptimizeDict(Dictionary<string, decimal> dict);
     }
 }

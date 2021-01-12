@@ -18,14 +18,10 @@ namespace TripShare
             this.calculationMethod = calculationMethod;
         }
 
-        public decimal CalculateEqualExpense()
+        public Dictionary<string, decimal> CalculateShare()
         {
-            return (from expense in expenses select expense.Amount).Sum()/tableInfo.NumberOfMembers;
-        }
-
-        public Dictionary<string, decimal> CreateMemberExpenseDictionary()
-        {
-            return calculationMethod.CalculateMembersExpenses(this);
+            var dict = calculationMethod.CalculateMembersExpenses(this);
+            return calculationMethod.OptimizeDict(dict);
         }
 
         

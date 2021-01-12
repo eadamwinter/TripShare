@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace TripShare
 {
@@ -43,6 +44,45 @@ namespace TripShare
         {
             //Tworzenie nazwy ktora bedzie dodana do slownika
             return expense.NamesOfMembersInvolved[which]+"_"+expense.Name;
+        }
+
+        public Dictionary<string, decimal> OptimizeDict(Dictionary<string, decimal> dict)
+        {
+            List<string> keyList = dict.Keys.ToList();
+
+            foreach (var key in keyList)
+            {
+                
+                if(!dict.ContainsKey(key)) { continue; }
+                string newkey = MakingOppositeKey(key);
+                
+                if(dict.ContainsKey(newkey))
+                {
+                    if (dict[key] == dict[newkey])
+                    {
+                        dict.Remove(key);
+                        dict.Remove(newkey);
+                    }
+                    else if(dict[key]>dict[newkey])
+                    {
+                        dict[key] -= dict[newkey];
+                        dict.Remove(newkey);
+                    }
+                    else if(dict[key]<dict[newkey])
+                    {
+                        dict[newkey] -= dict[key];
+                        dict.Remove(key);
+                    }
+                }               
+            }
+            return dict;
+        }
+
+        public string MakingOppositeKey(string key)
+        {
+            string[] subs = key.Split('_');
+            string newstring = subs[1] + "_" + subs[0];
+            return newstring;
         }
 
     //end of Class
