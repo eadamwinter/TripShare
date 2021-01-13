@@ -11,6 +11,7 @@ namespace Testy.Calculations
         public List<Expense> repo { get; set; }
         public Dictionary<string, decimal> expectedDict1 { get; set; }
         public List<Expense> testRepo { get; set; }
+        public IOptymizer optymizer { get; set; }
 
 
         [SetUp]
@@ -21,6 +22,8 @@ namespace Testy.Calculations
 
             IExpenseRepository mockData = new MockExpenseRepository();
             repo = mockData.GetAllExpenses();
+
+            optymizer = new Optimizer();
 
             expectedDict1 = new Dictionary<string, decimal>() { 
                 { "Igor_Adam", 4.20m }, { "Heniek_Adam", 4.20m }, 
@@ -40,7 +43,7 @@ namespace Testy.Calculations
         {
             //Arrange
             ICalculationMethod calculationMethod = new CalculationMethod();
-            Calculation calculation = new Calculation(repo, tableInfo, calculationMethod);
+            Calculation calculation = new Calculation(repo, tableInfo, calculationMethod, optymizer);
 
             //Act
             var dict = calculationMethod.CalculateMembersExpenses(calculation);
@@ -61,7 +64,7 @@ namespace Testy.Calculations
             expenses.Add(new Expense(1, "Adam", 12.60m, new List<string>() { "Igor" }));
 
             ICalculationMethod calculationMethod = new CalculationMethod();
-            Calculation calculation = new Calculation(expenses, tableInfo, calculationMethod);
+            Calculation calculation = new Calculation(expenses, tableInfo, calculationMethod, optymizer);
 
             //Act
             var dict = calculationMethod.CalculateMembersExpenses(calculation);
@@ -80,7 +83,7 @@ namespace Testy.Calculations
         {
             //Arrange
             CalculationMethod calculationMethod = new CalculationMethod();
-            Calculation calculation = new Calculation(repo, tableInfo, calculationMethod);
+            Calculation calculation = new Calculation(repo, tableInfo, calculationMethod, optymizer);
 
             //Act
             var exp = repo[0];
@@ -117,7 +120,7 @@ namespace Testy.Calculations
             //Arrange
             ICalculationMethod calculationMethod = new CalculationMethod();
 
-            Calculation calculation = new Calculation(repo, tableInfo, calculationMethod);
+            Calculation calculation = new Calculation(repo, tableInfo, calculationMethod, optymizer);
 
             //Act
             var dict = calculationMethod.CalculateMembersExpenses(calculation);
@@ -142,22 +145,24 @@ namespace Testy.Calculations
         {
             //Arrange
             ICalculationMethod calculationMethod = new CalculationMethod();
-            Calculation calculation = new Calculation(repo, tableInfo, calculationMethod);
+            Calculation calculation = new Calculation(repo, tableInfo, calculationMethod, optymizer);
 
             //Act
             var resultdict = calculation.CalculateShare();
 
-            var expecteddict = new Dictionary<string, decimal>() {
-                { "Igor_Adam", 2.15m }, { "Adam_Heniek", 3.90m },
-                { "Igor_Heniek", 6.05m } };
-            var keylist = new List<string>() { "Igor_Adam", "Adam_Heniek", "Igor_Heniek" };
-            var valuelist = new List<decimal>() { 2.15m, 3.90m, 6.05m };
+            //var expecteddict = new Dictionary<string, decimal>() {
+            //    { "Igor_Adam", 2.15m }, { "Adam_Heniek", 3.90m },
+            //    { "Igor_Heniek", 6.05m } };
+            //var keylist = new List<string>() { "Igor_Adam", "Adam_Heniek", "Igor_Heniek" };
+            //var valuelist = new List<decimal>() { 2.15m, 3.90m, 6.05m };
 
+            var expecteddict = new Dictionary<string, decimal>() { { "Adam_Heniek", 1.75m }, { "Igor_Heniek", 8.2m } };
+            var keylist = new List<string>() { "Adam_Heniek", "Igor_Heniek" };
+            var valuelist = new List<decimal>() { 1.75m, 8.2m };
 
             //Assert
             Assert.IsNotNull(resultdict);
             Assert.AreEqual(expecteddict.Count, resultdict.Count);
-            Assert.Contains("Igor_Adam", resultdict.Keys);
             Assert.AreEqual(keylist, resultdict.Keys.ToList());
             Assert.AreEqual(valuelist, resultdict.Values.ToList());
         }
@@ -166,17 +171,20 @@ namespace Testy.Calculations
         {
             //Arrange
             ICalculationMethod calculationMethod = new CalculationMethod();
-            Calculation calculation = new Calculation(testRepo, tableInfo, calculationMethod);
+            Calculation calculation = new Calculation(testRepo, tableInfo, calculationMethod, optymizer);
 
             //Act
             var resultdict = calculation.CalculateShare();
 
-            var expecteddict = new Dictionary<string, decimal>() {
-                { "Adam_Tomek", 1.0m }, { "Igor_Tomek", 2.0m },
-                { "Heniek_Tomek", 1.0m }, {"Igor_Heniek", 1.0m } };
-            var keylist = new List<string>() { "Adam_Tomek", "Igor_Tomek", "Heniek_Tomek", "Igor_Heniek" };
-            var valuelist = new List<decimal>() { 1.0m, 2.0m, 1.0m, 1.0m };
+            //var expecteddict = new Dictionary<string, decimal>() {
+            //    { "Adam_Tomek", 1.0m }, { "Igor_Tomek", 2.0m },
+            //    { "Heniek_Tomek", 1.0m }, {"Igor_Heniek", 1.0m } };
+            //var keylist = new List<string>() { "Adam_Tomek", "Igor_Tomek", "Heniek_Tomek", "Igor_Heniek" };
+            //var valuelist = new List<decimal>() { 1.0m, 2.0m, 1.0m, 1.0m };
 
+            var expecteddict = new Dictionary<string, decimal>() { { "Adam_Tomek", 1.0m }, { "Igor_Tomek", 3.0m } };
+            var keylist = new List<string>() { "Adam_Tomek", "Igor_Tomek" };
+            var valuelist = new List<decimal>() { 1.0m, 3.0m };
 
             //Assert
             Assert.IsNotNull(resultdict);

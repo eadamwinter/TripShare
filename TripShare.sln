@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TripShare", "TripShare\TripShare.csproj", "{559B9BD0-D6C5-42EF-9178-17C046928C11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TripShare", "TripShare\TripShare.csproj", "{559B9BD0-D6C5-42EF-9178-17C046928C11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testy", "Testy\Testy.csproj", "{31FE8159-C2CE-4C4C-B40A-BA184210FF38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testy", "Testy\Testy.csproj", "{31FE8159-C2CE-4C4C-B40A-BA184210FF38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebTripShare", "WebTripShare\WebTripShare.csproj", "{24E5392C-3AE5-410B-B398-381F17F7B86D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{31FE8159-C2CE-4C4C-B40A-BA184210FF38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31FE8159-C2CE-4C4C-B40A-BA184210FF38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31FE8159-C2CE-4C4C-B40A-BA184210FF38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24E5392C-3AE5-410B-B398-381F17F7B86D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24E5392C-3AE5-410B-B398-381F17F7B86D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24E5392C-3AE5-410B-B398-381F17F7B86D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24E5392C-3AE5-410B-B398-381F17F7B86D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
