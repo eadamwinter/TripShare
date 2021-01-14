@@ -13,9 +13,9 @@ namespace TripShare
 
             //Utworzenie slownika(pustego) ktory bedzie stopniowo zapelniany danymi
             Dictionary<string, decimal> MemberToMemberDict = new Dictionary<string, decimal>();
+            IEnumerable<Expense> expenses = calculation.expenseRepository.GetAllExpenses();
 
-
-            foreach(var expense in calculation.expenses)
+            foreach(var expense in expenses)
             {
                 decimal average = expense.Amount / (expense.NumberOfMembersInvolved+1);
 

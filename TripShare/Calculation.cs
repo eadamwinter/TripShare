@@ -5,25 +5,25 @@ using System.Linq;
 
 namespace TripShare
 {
-    public class Calculation
+    public class Calculation:ICalculation
     {
         public IOptymizer optymizer { get; set; }
         public ICalculationMethod calculationMethod { get; set; }
-        public TableInfo tableInfo { get; set; }
-        public IEnumerable<Expense> expenses { get; set; }
+        public IExpenseRepository expenseRepository { get; set; }
+        public ITableRepository tableRepository { get; set; }
 
-        public Calculation(List<Expense> expenses, TableInfo tableInfo, ICalculationMethod calculationMethod, IOptymizer optymizer)
+        public Calculation(IExpenseRepository expenseRepository, ITableRepository tableRepository, ICalculationMethod calculationMethod, IOptymizer optymizer)
         {
-            this.expenses = expenses;
-            this.tableInfo = tableInfo;
+            this.tableRepository = tableRepository;
             this.calculationMethod = calculationMethod;
             this.optymizer = optymizer;
+            this.expenseRepository = expenseRepository;
         }
 
         public Dictionary<string, decimal> CalculateShare()
         {
-            var dict = calculationMethod.CalculateMembersExpenses(this);
-            var smallerdict = calculationMethod.OptimizeDict(dict);
+            Dictionary<string, decimal> dict = calculationMethod.CalculateMembersExpenses(this);
+            Dictionary<string, decimal> smallerdict = calculationMethod.OptimizeDict(dict);
             return optymizer.OptimizeDict(smallerdict);
         }
 

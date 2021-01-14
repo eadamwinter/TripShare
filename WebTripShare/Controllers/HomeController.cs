@@ -13,21 +13,23 @@ namespace WebTripShare.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        //private readonly Dictionary<String, decimal> dict;
+        private readonly IResultMaker resultMaker;
+        private readonly ICalculation calculation;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IResultMaker resultMaker, ICalculation calculation)
         {
             _logger = logger;
+            this.resultMaker = resultMaker;
+            this.calculation = calculation;
         }
 
         public IActionResult Index()
         {
-            IOptymizer optymizer = new Optimizer();
-            var simpledict1 = new Dictionary<string, decimal>() { { "Adam_Tomek", 1.0m}, { "Igor_Tomek", 2.0m},
-                {"Heniek_Tomek", 1.0m }, {"Igor_Heniek", 1.0m} };
-            Dictionary<string, decimal> dict = optymizer.OptimizeDict(simpledict1);
 
-            return View(dict);
+            var dict = calculation.CalculateShare();
+
+            var result = resultMaker.PrepareResult(dict);
+            return View(result);
         }
 
         public IActionResult Privacy()

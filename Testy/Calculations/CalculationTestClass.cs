@@ -2,6 +2,7 @@
 using TripShare;
 using System.Collections.Generic;
 using System.Linq;
+using Moq;
 
 namespace Testy.Calculations
 {
@@ -12,16 +13,18 @@ namespace Testy.Calculations
         public Dictionary<string, decimal> expectedDict1 { get; set; }
         public List<Expense> testRepo { get; set; }
         public IOptymizer optymizer { get; set; }
+        public IExpenseRepository expenseRepository { get; set; }
+        public ITableRepository tableRepository { get; set; }
 
 
         [SetUp]
         public void Setup()
         {
-            ITableRepository tableRepository = new MockTableRepository();
-            tableInfo = tableRepository.GetInformationAboutTable();
+            tableRepository = new MockTableRepository();
+            //tableInfo = tableRepository.GetInformationAboutTable();
 
-            IExpenseRepository mockData = new MockExpenseRepository();
-            repo = mockData.GetAllExpenses();
+            expenseRepository = new MockExpenseRepository();
+            //repo = expenseRepository.GetAllExpenses();
 
             optymizer = new Optimizer();
 
@@ -35,6 +38,7 @@ namespace Testy.Calculations
             testRepo.Add(new Expense(1, "Tomek", 8.0m, new List<string>() { "Adam", "Igor", "Heniek" }));
             testRepo.Add(new Expense(1, "Igor", 2.0m, new List<string>() { "Adam" }));
             testRepo.Add(new Expense(1, "Heniek", 4.0m, new List<string>() { "Adam", "Tomek", "Igor" }));
+
         }
 
 
@@ -43,7 +47,7 @@ namespace Testy.Calculations
         {
             //Arrange
             ICalculationMethod calculationMethod = new CalculationMethod();
-            Calculation calculation = new Calculation(repo, tableInfo, calculationMethod, optymizer);
+            Calculation calculation = new Calculation(expenseRepository, tableRepository, calculationMethod, optymizer);
 
             //Act
             var dict = calculationMethod.CalculateMembersExpenses(calculation);
@@ -60,11 +64,13 @@ namespace Testy.Calculations
         public void DictionaryTest_OnePersonInvolved()
         {
             //Arrange
-            List<Expense> expenses = new List<Expense>();
-            expenses.Add(new Expense(1, "Adam", 12.60m, new List<string>() { "Igor" }));
+
+            var exp = new Expense(1, "Adam", 12.60m, new List<string>() { "Igor" });
+            var mockRepository = new Mock<IExpenseRepository>();
+            mockRepository.Setup(x => x.GetAllExpenses()).Returns(new List<Expense>() { exp });
 
             ICalculationMethod calculationMethod = new CalculationMethod();
-            Calculation calculation = new Calculation(expenses, tableInfo, calculationMethod, optymizer);
+            Calculation calculation = new Calculation(mockRepository.Object, tableRepository, calculationMethod, optymizer);
 
             //Act
             var dict = calculationMethod.CalculateMembersExpenses(calculation);
@@ -83,10 +89,9 @@ namespace Testy.Calculations
         {
             //Arrange
             CalculationMethod calculationMethod = new CalculationMethod();
-            Calculation calculation = new Calculation(repo, tableInfo, calculationMethod, optymizer);
 
             //Act
-            var exp = repo[0];
+            var exp = expenseRepository.GetAllExpenses()[0];
             string singleStringForDict = calculationMethod.CreateStringForDictionary(exp, 0);
             string expectedString = "Igor_Adam";
 
@@ -119,8 +124,7 @@ namespace Testy.Calculations
         {
             //Arrange
             ICalculationMethod calculationMethod = new CalculationMethod();
-
-            Calculation calculation = new Calculation(repo, tableInfo, calculationMethod, optymizer);
+            Calculation calculation = new Calculation(expenseRepository, tableRepository, calculationMethod, optymizer);
 
             //Act
             var dict = calculationMethod.CalculateMembersExpenses(calculation);
@@ -145,16 +149,10 @@ namespace Testy.Calculations
         {
             //Arrange
             ICalculationMethod calculationMethod = new CalculationMethod();
-            Calculation calculation = new Calculation(repo, tableInfo, calculationMethod, optymizer);
+            Calculation calculation = new Calculation(expenseRepository, tableRepository, calculationMethod, optymizer);
 
             //Act
             var resultdict = calculation.CalculateShare();
-
-            //var expecteddict = new Dictionary<string, decimal>() {
-            //    { "Igor_Adam", 2.15m }, { "Adam_Heniek", 3.90m },
-            //    { "Igor_Heniek", 6.05m } };
-            //var keylist = new List<string>() { "Igor_Adam", "Adam_Heniek", "Igor_Heniek" };
-            //var valuelist = new List<decimal>() { 2.15m, 3.90m, 6.05m };
 
             var expecteddict = new Dictionary<string, decimal>() { { "Adam_Heniek", 1.75m }, { "Igor_Heniek", 8.2m } };
             var keylist = new List<string>() { "Adam_Heniek", "Igor_Heniek" };
@@ -170,17 +168,14 @@ namespace Testy.Calculations
         public void CalculationsForTestRepo()
         {
             //Arrange
+            var mockTestRepo = new Mock<IExpenseRepository>();
+            mockTestRepo.Setup(x => x.GetAllExpenses()).Returns(testRepo);
+
             ICalculationMethod calculationMethod = new CalculationMethod();
-            Calculation calculation = new Calculation(testRepo, tableInfo, calculationMethod, optymizer);
+            Calculation calculation = new Calculation(mockTestRepo.Object, tableRepository, calculationMethod, optymizer);
 
             //Act
             var resultdict = calculation.CalculateShare();
-
-            //var expecteddict = new Dictionary<string, decimal>() {
-            //    { "Adam_Tomek", 1.0m }, { "Igor_Tomek", 2.0m },
-            //    { "Heniek_Tomek", 1.0m }, {"Igor_Heniek", 1.0m } };
-            //var keylist = new List<string>() { "Adam_Tomek", "Igor_Tomek", "Heniek_Tomek", "Igor_Heniek" };
-            //var valuelist = new List<decimal>() { 1.0m, 2.0m, 1.0m, 1.0m };
 
             var expecteddict = new Dictionary<string, decimal>() { { "Adam_Tomek", 1.0m }, { "Igor_Tomek", 3.0m } };
             var keylist = new List<string>() { "Adam_Tomek", "Igor_Tomek" };
@@ -220,7 +215,6 @@ namespace Testy.Calculations
             var simpledict2 = new Dictionary<string, decimal>() { { "Igor_Tomek", 2.0m}, { "Heniek_Tomek", 1.0m},
                 {"Igor_Heniek", 1.0m }, {"Adam_Igor", 3.0m}, {"Adam_Tomek", 1.0m } };
 
-            //var expecteddict2 = new Dictionary<string, decimal>() { { "Igor_Tomek", 3.0m }, { "Adam_Igor", 4.0m } };
             var expecteddict2 = new Dictionary<string, decimal>() { { "Adam_Tomek", 4.0m } };
 
             var simpledict3 = new Dictionary<string, decimal>() { { "Igor_Adam", 2.15m}, { "Adam_Heniek", 3.9m},

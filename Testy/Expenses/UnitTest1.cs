@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TripShare;
 
-namespace Testy
+namespace Testy.Expenses
 {
     public class Tests
     {
