@@ -8,7 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using TripShare;
+using WebTripShare.Models;
 
 namespace WebTripShare
 {
@@ -25,6 +27,10 @@ namespace WebTripShare
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<AppDbContext>(options => 
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddScoped<ITableRepository, MockTableRepository>();
             services.AddScoped<IExpenseRepository, MockExpenseRepository>();
             services.AddScoped<ICalculationMethod, CalculationMethod>();

@@ -11,8 +11,9 @@ namespace TripShare
         public string TimeOfExpense { get; set; }
         public byte NumberOfMembersInvolved { get; set; }
         public List<string> NamesOfMembersInvolved { get; set; }
+        public string Comment { get; set; }
 
-        public Expense(byte idTabeli, string name, decimal amount, List<string> membersInvolved)
+        public Expense(byte idTabeli, string name, decimal amount, List<string> membersInvolved, string comment="No comment added.")
         {
             this.IdTable = idTabeli;
             this.Name = name;
@@ -21,6 +22,7 @@ namespace TripShare
             //narazie wszyscy będą zamieszani
             this.NamesOfMembersInvolved = membersInvolved;
             this.NumberOfMembersInvolved = (byte)membersInvolved.Count;
+            this.Comment = comment;
         }
     }
 }

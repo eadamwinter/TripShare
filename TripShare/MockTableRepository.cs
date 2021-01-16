@@ -9,9 +9,10 @@ namespace TripShare
         public TableInfo GetInformationAboutTable()
         {
             TableInfo tableInfo = new TableInfo();
+            tableInfo.TableNumber = 1;
             tableInfo.TableName = "GorskieMalrze";
             tableInfo.NumberOfMembers = 3;
-            tableInfo.NamesOfMemebers = new List<string>() { "Adam", "Igor", "Heniek" };
+            tableInfo.NamesOfMembers = new List<string>() { "Adam", "Igor", "Heniek" };
             return tableInfo;
         }
     }
