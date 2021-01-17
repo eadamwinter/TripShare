@@ -5,7 +5,7 @@ namespace TripShare
 {
     public class Expense
     {
-        public byte IdTable { get; set; }
+        public byte TableNumber { get; set; }
         public string Name { get; set; }
         public decimal Amount { get; set; }
         public string TimeOfExpense { get; set; }
@@ -13,16 +13,16 @@ namespace TripShare
         public List<string> NamesOfMembersInvolved { get; set; }
         public string Comment { get; set; }
 
-        public Expense(byte idTabeli, string name, decimal amount, List<string> membersInvolved, string comment="No comment added.")
-        {
-            this.IdTable = idTabeli;
-            this.Name = name;
-            this.Amount = amount;
-            this.TimeOfExpense = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss");
-            //narazie wszyscy będą zamieszani
-            this.NamesOfMembersInvolved = membersInvolved;
-            this.NumberOfMembersInvolved = (byte)membersInvolved.Count;
-            this.Comment = comment;
-        }
+        //public Expense(byte idTabeli, string name, decimal amount, List<string> membersInvolved, string comment="No comment added.")
+        //{
+        //    this.TableNumber = idTabeli;
+        //    this.Name = name;
+        //    this.Amount = amount;
+        //    this.TimeOfExpense = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss");
+        //    //narazie wszyscy będą zamieszani
+        //    this.NamesOfMembersInvolved = membersInvolved;
+        //    this.NumberOfMembersInvolved = (byte)membersInvolved.Count;
+        //    this.Comment = comment;
+        //}
     }
 }

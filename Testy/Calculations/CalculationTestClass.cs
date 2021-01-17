@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using TripShare;
+using WebTripShare;
 using System.Collections.Generic;
 using System.Linq;
 using Moq;
@@ -15,6 +16,7 @@ namespace Testy.Calculations
         public IOptymizer optymizer { get; set; }
         public IExpenseRepository expenseRepository { get; set; }
         public ITableRepository tableRepository { get; set; }
+        public ExpenseMaker expMaker { get; set; }
 
 
         [SetUp]
@@ -26,6 +28,8 @@ namespace Testy.Calculations
             expenseRepository = new MockExpenseRepository();
             //repo = expenseRepository.GetAllExpenses();
 
+            expMaker = new ExpenseMaker();
+
             optymizer = new Optimizer();
 
             expectedDict1 = new Dictionary<string, decimal>() { 
@@ -34,10 +38,10 @@ namespace Testy.Calculations
                 { "Adam_Heniek", 8.10m }, { "Igor_Heniek", 8.10m } };
 
             testRepo = new List<Expense>();
-            testRepo.Add(new Expense(1, "Adam", 4.0m, new List<string>() { "Tomek", "Igor", "Heniek" }));
-            testRepo.Add(new Expense(1, "Tomek", 8.0m, new List<string>() { "Adam", "Igor", "Heniek" }));
-            testRepo.Add(new Expense(1, "Igor", 2.0m, new List<string>() { "Adam" }));
-            testRepo.Add(new Expense(1, "Heniek", 4.0m, new List<string>() { "Adam", "Tomek", "Igor" }));
+            testRepo.Add(expMaker.CreateExpense(1, "Adam", 4.0m, new List<string>() { "Tomek", "Igor", "Heniek" }));
+            testRepo.Add(expMaker.CreateExpense(1, "Tomek", 8.0m, new List<string>() { "Adam", "Igor", "Heniek" }));
+            testRepo.Add(expMaker.CreateExpense(1, "Igor", 2.0m, new List<string>() { "Adam" }));
+            testRepo.Add(expMaker.CreateExpense(1, "Heniek", 4.0m, new List<string>() { "Adam", "Tomek", "Igor" }));
 
         }
 
@@ -65,7 +69,7 @@ namespace Testy.Calculations
         {
             //Arrange
 
-            var exp = new Expense(1, "Adam", 12.60m, new List<string>() { "Igor" });
+            var exp = expMaker.CreateExpense(1, "Adam", 12.60m, new List<string>() { "Igor" });
             var mockRepository = new Mock<IExpenseRepository>();
             mockRepository.Setup(x => x.GetAllExpenses()).Returns(new List<Expense>() { exp });
 

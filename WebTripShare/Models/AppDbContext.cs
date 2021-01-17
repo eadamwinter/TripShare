@@ -14,9 +14,9 @@ namespace WebTripShare.Models
 
         }
 
-        public DbSet<Expense> ExpenseRepository { get; set; }
-        public DbSet<TableInfo> TableRepository { get; set; }
-        public DbSet<MembersInfo> MembersRepository { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
+        public DbSet<TableInfo> Tables { get; set; }
+        public DbSet<MembersInfo> Members { get; set; }
 
     }
 }
