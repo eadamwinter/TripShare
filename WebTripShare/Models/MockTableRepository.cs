@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WebTripShare.Models;
+using System.Linq;
 
 namespace TripShare
 {
@@ -8,11 +10,13 @@ namespace TripShare
     {
         public TableInfo GetInformationAboutTable()
         {
+            MockMembersRepository mockMembersRepository = new MockMembersRepository();
+
+
             TableInfo tableInfo = new TableInfo();
-            tableInfo.TableNumber = 1;
+            tableInfo.TableInfoId = 1;
             tableInfo.TableName = "GorskieMalrze";
-            tableInfo.NumberOfMembers = 3;
-            tableInfo.NamesOfMembers = new List<string>() { "Adam", "Igor", "Heniek" };
+            tableInfo.Members = mockMembersRepository.GetAllMembers().ToList();
             return tableInfo;
         }
     }

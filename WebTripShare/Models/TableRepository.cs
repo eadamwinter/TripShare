@@ -16,7 +16,7 @@ namespace WebTripShare.Models
 
         public TableInfo GetInformationAboutTable()
         {
-            return appDbContext.Tables.First(t => t.TableNumber == 1);
+            return appDbContext.Tables.First(t => t.TableInfoId == 1);
         }
     }
 }

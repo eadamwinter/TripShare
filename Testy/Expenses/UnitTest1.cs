@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TripShare;
@@ -16,15 +17,23 @@ namespace Testy.Expenses
         public void CreatingNewExpense()
         {
             //Arrange
-            ExpenseMaker expMaker = new ExpenseMaker();
+            Expense expense = new Expense();
+            expense.TableNumber = 1;
+            expense.Name = "Adam";
+            expense.Amount = 15.40m;
+            expense.TimeOfExpense = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss");
+            expense.NamesOfMembersInvolved = "Igor,Tomek";
+            expense.NumberOfMembersInvolved = 2;
+            
+            //ExpenseMaker expMaker = new ExpenseMaker();
 
-            byte NumerTabeli = 1;
-            string imie = "Adam";
-            decimal wydatek = 15.40m;
-            List<string> mocklista = new List<string>();
+            //byte NumerTabeli = 1;
+            //string imie = "Adam";
+            //decimal wydatek = 15.40m;
+            //List<string> mocklista = new List<string>();
 
             //Act
-            Expense expense = expMaker.CreateExpense(NumerTabeli, imie, wydatek, mocklista);
+            //Expense expense = expMaker.CreateExpense(NumerTabeli, imie, wydatek, mocklista);
 
             //Assert
             Assert.AreEqual(1, expense.TableNumber);
