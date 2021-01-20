@@ -7,7 +7,14 @@ namespace TripShare
 {
     public class ExpenseMaker
     {
-        public Expense CreateExpense(byte tableNumber, string name, decimal amount, string membersInvolved, string comment="No comment added.")
+        public byte TableNumber { get; set; }
+        public string Name { get; set; }
+        public decimal Amount { get; set; }
+        public string MembersInvolved { get; set; }
+        public string Comment { get; set; }
+
+
+        public static Expense CreateExpense(byte tableNumber, string name, decimal amount, string membersInvolved, string comment="No comment added.")
         {
             Expense expense = new Expense();
 

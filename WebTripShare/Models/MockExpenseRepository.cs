@@ -11,13 +11,16 @@ namespace TripShare
         
         public List<Expense> GetAllExpenses()
         {
-            ExpenseMaker expMaker = new ExpenseMaker();
-
             List<Expense> expenses = new List<Expense>();
-            expenses.Add(expMaker.CreateExpense(1, "Adam", 12.60m, "Igor,Heniek"));
-            expenses.Add(expMaker.CreateExpense(1, "Igor", 6.15m, "Adam,Heniek"));
-            expenses.Add(expMaker.CreateExpense(1, "Heniek", 24.30m, "Adam,Igor"));
+            expenses.Add(ExpenseMaker.CreateExpense(1, "Adam", 12.60m, "Igor,Heniek"));
+            expenses.Add(ExpenseMaker.CreateExpense(1, "Igor", 6.15m, "Adam,Heniek"));
+            expenses.Add(ExpenseMaker.CreateExpense(1, "Heniek", 24.30m, "Adam,Igor"));
             return expenses;
+        }
+
+        public void AddExpenseToTheDatabase(Expense expense)
+        {
+            throw new NotImplementedException();
         }
     }
 }

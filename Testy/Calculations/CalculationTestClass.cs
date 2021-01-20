@@ -16,7 +16,6 @@ namespace Testy.Calculations
         public IOptymizer optymizer { get; set; }
         public IExpenseRepository expenseRepository { get; set; }
         public ITableRepository tableRepository { get; set; }
-        public ExpenseMaker expMaker { get; set; }
 
 
         [SetUp]
@@ -28,8 +27,6 @@ namespace Testy.Calculations
             expenseRepository = new MockExpenseRepository();
             //repo = expenseRepository.GetAllExpenses();
 
-            expMaker = new ExpenseMaker();
-
             optymizer = new Optimizer();
 
             expectedDict1 = new Dictionary<string, decimal>() { 
@@ -39,13 +36,13 @@ namespace Testy.Calculations
 
             testRepo = new List<Expense>();
             //testRepo.Add(expMaker.CreateExpense(1, "Adam", 4.0m, new List<string>() { "Tomek", "Igor", "Heniek" }));
-            testRepo.Add(expMaker.CreateExpense(1, "Adam", 4.0m, "Tomek,Igor,Heniek"));
+            testRepo.Add(ExpenseMaker.CreateExpense(1, "Adam", 4.0m, "Tomek,Igor,Heniek"));
             //testRepo.Add(expMaker.CreateExpense(1, "Tomek", 8.0m, new List<string>() { "Adam", "Igor", "Heniek" }));
-            testRepo.Add(expMaker.CreateExpense(1, "Tomek", 8.0m, "Adam,Igor,Heniek"));
+            testRepo.Add(ExpenseMaker.CreateExpense(1, "Tomek", 8.0m, "Adam,Igor,Heniek"));
             //testRepo.Add(expMaker.CreateExpense(1, "Igor", 2.0m, new List<string>() { "Adam" }));
-            testRepo.Add(expMaker.CreateExpense(1, "Igor", 2.0m, "Adam"));
+            testRepo.Add(ExpenseMaker.CreateExpense(1, "Igor", 2.0m, "Adam"));
             //testRepo.Add(expMaker.CreateExpense(1, "Heniek", 4.0m, new List<string>() { "Adam", "Tomek", "Igor" }));
-            testRepo.Add(expMaker.CreateExpense(1, "Heniek", 4.0m, "Adam,Tomek,Igor"));
+            testRepo.Add(ExpenseMaker.CreateExpense(1, "Heniek", 4.0m, "Adam,Tomek,Igor"));
 
         }
 
@@ -74,7 +71,7 @@ namespace Testy.Calculations
             //Arrange
 
             //var exp = expMaker.CreateExpense(1, "Adam", 12.60m, new List<string>() { "Igor" });
-            var exp = expMaker.CreateExpense(1, "Adam", 12.60m, "Igor");
+            var exp = ExpenseMaker.CreateExpense(1, "Adam", 12.60m, "Igor");
             var mockRepository = new Mock<IExpenseRepository>();
             mockRepository.Setup(x => x.GetAllExpenses()).Returns(new List<Expense>() { exp });
 

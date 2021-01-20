@@ -12,7 +12,7 @@ namespace Testy.Results
         }
 
         [Test]
-        public void GettingInfoAboutTables()
+        public void GettingCalculatedData()
         {
             //Arrange
             IResultMaker resultMaker = new ResultMaker();

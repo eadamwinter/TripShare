@@ -13,6 +13,13 @@ namespace WebTripShare.Models
         {
             this.appDbContext = appDbContext;
         }
+
+        public void AddExpenseToTheDatabase(Expense expense)
+        {
+            appDbContext.Expenses.Add(expense);
+            appDbContext.SaveChanges();
+        }
+
         public List<Expense> GetAllExpenses()
         {
             return appDbContext.Expenses.Where(e => e.TableNumber == 1).ToList();
