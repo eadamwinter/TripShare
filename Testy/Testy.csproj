@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TripShare\TripShare.csproj" />
+    <ProjectReference Include="..\WebTripShare\WebTripShare.csproj" />
   </ItemGroup>
 
 </Project>

@@ -19,9 +19,12 @@ namespace TripShare
             {
                 decimal average = expense.Amount / (expense.NumberOfMembersInvolved+1);
 
+                List<string> membersInvolved = expense.NamesOfMembersInvolved.Split(',').ToList();
+                string member = expense.Name;
+
                 for(byte i=0; i<expense.NumberOfMembersInvolved; i++)
                 {
-                    string Who_Whom = CreateStringForDictionary(expense, i);
+                    string Who_Whom = CreateStringForDictionary(membersInvolved, member, i);
                     
                     
                     
@@ -40,10 +43,11 @@ namespace TripShare
             return MemberToMemberDict;
         }
 
-        public string CreateStringForDictionary(Expense expense, byte which)
+        public string CreateStringForDictionary(List<string> membersInvolved, string name, byte which)
         {
             //Tworzenie nazwy ktora bedzie dodana do slownika
-            return expense.NamesOfMembersInvolved[which]+"_"+expense.Name;
+            //return expense.NamesOfMembersInvolved[which]+"_"+expense.Name;
+            return membersInvolved[which] + "_" + name;
         }
 
         public Dictionary<string, decimal> OptimizeDict(Dictionary<string, decimal> dict)
