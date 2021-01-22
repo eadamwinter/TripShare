@@ -64,8 +64,6 @@ C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\bin\Debug\netcor
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\WebTripShare.csproj.CoreCompileInputs.cache
-C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\WebTripShare.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\bin\Debug\netcoreapp3.1\Humanizer.dll
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
@@ -81,3 +79,11 @@ C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\bin\Debug\netcor
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Expense\Add.cshtml.g.cs
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Expense\Success.cshtml.g.cs
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\bin\Debug\netcoreapp3.1\Moq.dll
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\WebTripShare.csproj.CoreCompileInputs.cache
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\WebTripShare.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Table\Add.cshtml.g.cs
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Table\Success.cshtml.g.cs
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Table\Info.cshtml.g.cs
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Table\AllTables.cshtml.g.cs

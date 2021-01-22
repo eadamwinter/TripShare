@@ -24,6 +24,7 @@ namespace Testy.Calculations
             tableRepository = new MockTableRepository();
             //tableInfo = tableRepository.GetInformationAboutTable();
 
+            //expenseRepository = new MockExpenseRepository(new Mock<IExpenseRepository>().Object);
             expenseRepository = new MockExpenseRepository();
             //repo = expenseRepository.GetAllExpenses();
 

@@ -15,7 +15,7 @@ namespace Testy.Table
         {
             //Arrange
             ITableRepository tableRepository = new MockTableRepository();
-            TableInfo tableInfo = tableRepository.GetInformationAboutTable();
+            TableInfo tableInfo = tableRepository.GetTableById(1);
 
             //Act
 

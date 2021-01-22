@@ -6,6 +6,7 @@ namespace TripShare
 {
     public interface ITableRepository
     {
-        TableInfo GetInformationAboutTable();
+        List<TableInfo> GetTables();
+        TableInfo GetTableById(byte id);
     }
 }

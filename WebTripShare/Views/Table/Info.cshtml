@@ -1,0 +1,29 @@
+﻿@model TripShare.TableInfo
+
+<div class="jumbotron jumbotron-fluid" style="background-color:lightgray">
+    <div class="container">
+        <h2 style="text-align:center">@Model.TableName</h2>
+        <h3>Group members:</h3>
+        <p>
+            @foreach (var member in Model.Members)
+            {
+                @member.Name
+                <span> </span>
+            }
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <table>
+        <div class="col-md-12">
+            <tr>
+                <td>Name</td>
+                <td>Amount</td>
+                <td>When</td>
+                <td>Members Involved</td>
+            </tr>
+        </div>
+    </table>
+    
+</div>

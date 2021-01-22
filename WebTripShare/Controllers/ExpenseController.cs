@@ -29,7 +29,7 @@ namespace WebTripShare.Controllers
             {
                 Expense expense = ExpenseMaker.CreateExpense(em.TableNumber, em.Name, em.Amount, em.MembersInvolved, em.Comment);
                 IExpenseRepository expenseRepository = new ExpenseRepository(appDbContext);
-                expenseRepository.AddExpenseToTheDatabase(expense);
+                expenseRepository.AddNewExpense(expense);
                 return RedirectToAction("Success");
             }
             return View(em);

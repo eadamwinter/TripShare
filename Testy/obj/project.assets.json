@@ -2071,6 +2071,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "5.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.2",
+          "Moq": "4.15.2",
           "TripShare": "1.0.0"
         },
         "compile": {

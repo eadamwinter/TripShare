@@ -1,0 +1,30 @@
+﻿@model List<TripShare.TableInfo>
+
+
+    <div class="jumbotron jumbotron-fluid" style="background-color:lightgray">
+        <div class="container">
+            <p>
+                Below You will find all groups created in application to share trip costs between its members. 
+                Please press the button "View details" for more information about each specific group.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-around">
+            @foreach (var table in Model)
+            {
+                
+                <div class="col-md-3 text-center border border-secondary m-2">
+                    <h4>Group number @table.TableInfoId</h4>
+                    <p>Name: @table.TableName</p>
+                    <form>
+                        <button class="btn btn-dark" asp-controller="Table" asp-action="Info" asp-route-id="@table.TableInfoId">View details</button>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+
+
+

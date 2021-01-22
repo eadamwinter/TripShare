@@ -8,7 +8,7 @@ namespace TripShare
 {
     public class MockTableRepository : ITableRepository
     {
-        public TableInfo GetInformationAboutTable()
+        public TableInfo GetTableById(byte id)
         {
             MockMembersRepository mockMembersRepository = new MockMembersRepository();
 
@@ -18,6 +18,10 @@ namespace TripShare
             tableInfo.TableName = "GorskieMalrze";
             tableInfo.Members = mockMembersRepository.GetAllMembers().ToList();
             return tableInfo;
+        }
+        public List<TableInfo> GetTables()
+        {
+            throw new NotImplementedException();
         }
     }
 }

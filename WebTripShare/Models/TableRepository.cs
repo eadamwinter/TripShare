@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TripShare;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebTripShare.Models
 {
@@ -14,9 +15,14 @@ namespace WebTripShare.Models
             this.appDbContext = appDbContext;
         }
 
-        public TableInfo GetInformationAboutTable()
+        public TableInfo GetTableById(byte id)
         {
-            return appDbContext.Tables.First(t => t.TableInfoId == 1);
+            return appDbContext.Tables.Include(a=>a.Members).First(f=>f.TableInfoId==id);
+        }
+
+        public List<TableInfo> GetTables()
+        {
+            return appDbContext.Tables.ToList();
         }
     }
 }

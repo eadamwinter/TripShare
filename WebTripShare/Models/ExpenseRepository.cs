@@ -14,7 +14,7 @@ namespace WebTripShare.Models
             this.appDbContext = appDbContext;
         }
 
-        public void AddExpenseToTheDatabase(Expense expense)
+        public void AddNewExpense(Expense expense)
         {
             appDbContext.Expenses.Add(expense);
             appDbContext.SaveChanges();

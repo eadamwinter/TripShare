@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace TripShare
+﻿namespace TripShare
 {
     public class Expense
     {
@@ -13,17 +10,5 @@ namespace TripShare
         public byte NumberOfMembersInvolved { get; set; }
         public string NamesOfMembersInvolved { get; set; }
         public string Comment { get; set; }
-
-        //public Expense(byte idTabeli, string name, decimal amount, List<string> membersInvolved, string comment="No comment added.")
-        //{
-        //    this.TableNumber = idTabeli;
-        //    this.Name = name;
-        //    this.Amount = amount;
-        //    this.TimeOfExpense = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss");
-        //    //narazie wszyscy będą zamieszani
-        //    this.NamesOfMembersInvolved = membersInvolved;
-        //    this.NumberOfMembersInvolved = (byte)membersInvolved.Count;
-        //    this.Comment = comment;
-        //}
     }
 }

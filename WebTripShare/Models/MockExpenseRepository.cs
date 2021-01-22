@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 using WebTripShare.Models;
 using System.Linq;
+using Moq;
 
 namespace TripShare
 {
     public class MockExpenseRepository : IExpenseRepository
     {
+        //private readonly IExpenseRepository exprepo;
+
+        //public MockExpenseRepository(IExpenseRepository exprepo)
+        //{
+        //    this.exprepo = exprepo;
+        //}
         
         public List<Expense> GetAllExpenses()
         {
@@ -18,9 +25,9 @@ namespace TripShare
             return expenses;
         }
 
-        public void AddExpenseToTheDatabase(Expense expense)
+        public void AddNewExpense(Expense expense)
         {
-            throw new NotImplementedException();
+            //exprepo.AddNewExpense(expense);
         }
     }
 }

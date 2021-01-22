@@ -1,0 +1,21 @@
+﻿<!-- model WebTripShare.Models.AddingData.Koles -->
+
+<h2>
+    Czy na pewno chcesz dodać bazę. To jest wszystko na sztywno wpisane w klasie DontUse,
+    ktora to jest w folderze AddingData
+</h2>
+<form asp-action="Add" method="post" role="form">
+
+
+    <!--    <label asp-for="isActive"></label>
+        <input asp-for="isActive" checked="checked" />
+    -->
+    @Html.TextBox("name")
+    <br /><br />
+    <!--ten checkbox zadzialal ewentualnie mozna jeszcze zrobic tak jak powyzej tylko zamiast textboxa checkbox-->
+    <br /><br />
+    <input type="checkbox" name="dupa" checked="checked" value="true"/>
+
+    <label>Press this button to add data to your database.</label>
+    <input type="submit" class="btn btn-danger" value="Dont Do It !" />
+</form>
