@@ -25,10 +25,9 @@ namespace WebTripShare.Controllers
 
         public IActionResult Index()
         {
-
             var dict = calculation.CalculateShare();
-
             var result = resultMaker.PrepareResult(dict);
+
             return View(result);
         }
 
