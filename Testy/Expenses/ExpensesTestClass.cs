@@ -48,7 +48,7 @@ namespace Testy.Expenses
             IExpenseRepository expenseRepository = new MockExpenseRepository();
 
             //Act
-            var expenses = expenseRepository.GetAllExpenses();
+            var expenses = expenseRepository.GetAllExpenses(1);
             var expense1 = expenses[0];
             var expense2 = expenses[1];
 
@@ -91,7 +91,8 @@ namespace Testy.Expenses
             byte TableNumber = 1;
             string Name = "Adam";
             decimal Amount = 24.99m;
-            string MembersInvolved = "Igor,Tomek";
+            List<string> MembersInvolved = new List<string>() { "Igor","Tomek" };
+            string members = "Igor,Tomek";
 
 
             //Act
@@ -102,8 +103,56 @@ namespace Testy.Expenses
             Assert.AreEqual(Name, expense.Name);
             Assert.AreEqual(Amount, expense.Amount);
             Assert.AreEqual("No comment added.", expense.Comment);
-            Assert.AreEqual(MembersInvolved, expense.NamesOfMembersInvolved);
+            Assert.AreEqual(members, expense.NamesOfMembersInvolved);
             Assert.AreEqual(2, expense.NumberOfMembersInvolved);
+        }
+        [Test]
+        public void ExpenseMaker_MakeMembers_SimpleTest()
+        {
+            //Arrange
+
+            string Name = "Adam";
+            List<string> MembersInvolved = new List<string>() { "Igor","Tomek" };
+
+
+            //Act
+            string Members = ExpenseMaker.MakeMembers(Name, MembersInvolved);
+
+            //Assert
+            Assert.IsNotNull(Members);
+            Assert.AreEqual("Igor,Tomek", Members);
+        }
+        [Test]
+        public void ExpenseMaker_MakeMembers_TheSameNameInMembersInvolved_Test()
+        {
+            //Arrange
+
+            string Name = "Adam";
+            List<string> MembersInvolved = new List<string>() { "Adam","Igor","Tomek" };
+
+
+            //Act
+            string Members = ExpenseMaker.MakeMembers(Name, MembersInvolved);
+
+            //Assert
+            Assert.IsNotNull(Members);
+            Assert.AreEqual("Igor,Tomek", Members);
+        }
+        [Test]
+        public void ExpenseMaker_MakeMembers_MembersInvolvedIsNull_Test()
+        {
+            //Arrange
+
+            string Name = "Adam";
+            List<string> MembersInvolved = new List<string>() {};
+
+            //Act
+            string Members = ExpenseMaker.MakeMembers(Name, MembersInvolved);
+
+            //Assert
+            Assert.IsNotNull(Members);
+            Assert.AreEqual("", Members);
+            Assert.AreEqual(string.Empty, Members);
         }
     }
 }

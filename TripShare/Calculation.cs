@@ -11,6 +11,7 @@ namespace TripShare
         public ICalculationMethod calculationMethod { get; set; }
         public IExpenseRepository expenseRepository { get; set; }
         public ITableRepository tableRepository { get; set; }
+        public byte TableNumber { get; set; }
 
         public Calculation(IExpenseRepository expenseRepository, ITableRepository tableRepository, ICalculationMethod calculationMethod, IOptymizer optymizer)
         {
@@ -20,8 +21,9 @@ namespace TripShare
             this.expenseRepository = expenseRepository;
         }
 
-        public Dictionary<string, decimal> CalculateShare()
+        public Dictionary<string, decimal> CalculateShare(byte tableNumber)
         {
+            TableNumber = tableNumber;
             Dictionary<string, decimal> dict = calculationMethod.CalculateMembersExpenses(this);
             Dictionary<string, decimal> smallerdict = calculationMethod.OptimizeDict(dict);
             return optymizer.OptimizeDict(smallerdict);

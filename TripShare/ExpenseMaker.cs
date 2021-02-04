@@ -14,8 +14,10 @@ namespace TripShare
         public string Comment { get; set; }
 
 
-        public static Expense CreateExpense(byte tableNumber, string name, decimal amount, string membersInvolved, string comment="No comment added.")
+        public static Expense CreateExpense(byte tableNumber, string name, decimal amount, IEnumerable<string> membersInv, string comment="No comment added.")
         {
+            string membersInvolved = MakeMembers(name, membersInv);
+
             Expense expense = new Expense();
 
             expense.TableNumber = tableNumber;
@@ -28,5 +30,21 @@ namespace TripShare
 
             return expense;
         }
+
+        public static string MakeMembers(string name, IEnumerable<string> membersInvolved)
+        {
+            StringBuilder Members = new StringBuilder();
+            foreach(string member in membersInvolved)
+            {
+                if(member!=name)
+                {
+                    Members.Append(member);
+                    Members.Append(",");
+                }
+            }
+            if(Members.Length>0) { Members.Length--; }
+            return Members.ToString();
+        }
+
     }
 }

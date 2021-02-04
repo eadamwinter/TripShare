@@ -20,9 +20,9 @@ namespace WebTripShare.Models
             appDbContext.SaveChanges();
         }
 
-        public List<Expense> GetAllExpenses()
+        public List<Expense> GetAllExpenses(byte tableNumber)
         {
-            return appDbContext.Expenses.Where(e => e.TableNumber == 1).ToList();
+            return appDbContext.Expenses.Where(e => e.TableNumber == tableNumber).ToList();
         }
     }
 }

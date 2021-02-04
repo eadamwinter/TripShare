@@ -13,7 +13,7 @@ namespace TripShare
 
             //Utworzenie slownika(pustego) ktory bedzie stopniowo zapelniany danymi
             Dictionary<string, decimal> MemberToMemberDict = new Dictionary<string, decimal>();
-            IEnumerable<Expense> expenses = calculation.expenseRepository.GetAllExpenses();
+            IEnumerable<Expense> expenses = calculation.expenseRepository.GetAllExpenses(calculation.TableNumber);
 
             foreach(var expense in expenses)
             {

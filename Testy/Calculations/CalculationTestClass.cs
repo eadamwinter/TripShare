@@ -22,11 +22,8 @@ namespace Testy.Calculations
         public void Setup()
         {
             tableRepository = new MockTableRepository();
-            //tableInfo = tableRepository.GetInformationAboutTable();
 
-            //expenseRepository = new MockExpenseRepository(new Mock<IExpenseRepository>().Object);
             expenseRepository = new MockExpenseRepository();
-            //repo = expenseRepository.GetAllExpenses();
 
             optymizer = new Optimizer();
 
@@ -36,14 +33,14 @@ namespace Testy.Calculations
                 { "Adam_Heniek", 8.10m }, { "Igor_Heniek", 8.10m } };
 
             testRepo = new List<Expense>();
-            //testRepo.Add(expMaker.CreateExpense(1, "Adam", 4.0m, new List<string>() { "Tomek", "Igor", "Heniek" }));
-            testRepo.Add(ExpenseMaker.CreateExpense(1, "Adam", 4.0m, "Tomek,Igor,Heniek"));
-            //testRepo.Add(expMaker.CreateExpense(1, "Tomek", 8.0m, new List<string>() { "Adam", "Igor", "Heniek" }));
-            testRepo.Add(ExpenseMaker.CreateExpense(1, "Tomek", 8.0m, "Adam,Igor,Heniek"));
-            //testRepo.Add(expMaker.CreateExpense(1, "Igor", 2.0m, new List<string>() { "Adam" }));
-            testRepo.Add(ExpenseMaker.CreateExpense(1, "Igor", 2.0m, "Adam"));
-            //testRepo.Add(expMaker.CreateExpense(1, "Heniek", 4.0m, new List<string>() { "Adam", "Tomek", "Igor" }));
-            testRepo.Add(ExpenseMaker.CreateExpense(1, "Heniek", 4.0m, "Adam,Tomek,Igor"));
+            testRepo.Add(ExpenseMaker.CreateExpense(1, "Adam", 4.0m, new List<string>() { "Tomek", "Igor", "Heniek" }));
+            //testRepo.Add(ExpenseMaker.CreateExpense(1, "Adam", 4.0m, "Tomek,Igor,Heniek"));
+            testRepo.Add(ExpenseMaker.CreateExpense(1, "Tomek", 8.0m, new List<string>() { "Adam", "Igor", "Heniek" }));
+            //testRepo.Add(ExpenseMaker.CreateExpense(1, "Tomek", 8.0m, "Adam,Igor,Heniek"));
+            testRepo.Add(ExpenseMaker.CreateExpense(1, "Igor", 2.0m, new List<string>() { "Adam" }));
+            //testRepo.Add(ExpenseMaker.CreateExpense(1, "Igor", 2.0m, "Adam"));
+            testRepo.Add(ExpenseMaker.CreateExpense(1, "Heniek", 4.0m, new List<string>() { "Adam", "Tomek", "Igor" }));
+            //testRepo.Add(ExpenseMaker.CreateExpense(1, "Heniek", 4.0m, "Adam,Tomek,Igor"));
 
         }
 
@@ -72,13 +69,13 @@ namespace Testy.Calculations
             //Arrange
 
             //var exp = expMaker.CreateExpense(1, "Adam", 12.60m, new List<string>() { "Igor" });
-            var exp = ExpenseMaker.CreateExpense(1, "Adam", 12.60m, "Igor");
+            var exp = ExpenseMaker.CreateExpense(1, "Adam", 12.60m, new List<string>() { "Igor" });
             var mockRepository = new Mock<IExpenseRepository>();
-            mockRepository.Setup(x => x.GetAllExpenses()).Returns(new List<Expense>() { exp });
+            mockRepository.Setup(x => x.GetAllExpenses(1)).Returns(new List<Expense>() { exp });
 
             ICalculationMethod calculationMethod = new CalculationMethod();
             Calculation calculation = new Calculation(mockRepository.Object, tableRepository, calculationMethod, optymizer);
-
+            calculation.TableNumber = 1;
             //Act
             var dict = calculationMethod.CalculateMembersExpenses(calculation);
             var expecteddict = new Dictionary<string, decimal>() { { "Igor_Adam", 6.30m } };
@@ -98,7 +95,7 @@ namespace Testy.Calculations
             CalculationMethod calculationMethod = new CalculationMethod();
 
             //Act
-            var exp = expenseRepository.GetAllExpenses()[0];
+            var exp = expenseRepository.GetAllExpenses(1)[0];
             string name = exp.Name;
             List<string> membersInvolved = exp.NamesOfMembersInvolved.Split(',').ToList();
 
@@ -162,7 +159,7 @@ namespace Testy.Calculations
             Calculation calculation = new Calculation(expenseRepository, tableRepository, calculationMethod, optymizer);
 
             //Act
-            var resultdict = calculation.CalculateShare();
+            var resultdict = calculation.CalculateShare(1);
 
             var expecteddict = new Dictionary<string, decimal>() { { "Adam_Heniek", 1.75m }, { "Igor_Heniek", 8.2m } };
             var keylist = new List<string>() { "Adam_Heniek", "Igor_Heniek" };
@@ -179,13 +176,13 @@ namespace Testy.Calculations
         {
             //Arrange
             var mockTestRepo = new Mock<IExpenseRepository>();
-            mockTestRepo.Setup(x => x.GetAllExpenses()).Returns(testRepo);
+            mockTestRepo.Setup(x => x.GetAllExpenses(1)).Returns(testRepo);
 
             ICalculationMethod calculationMethod = new CalculationMethod();
             Calculation calculation = new Calculation(mockTestRepo.Object, tableRepository, calculationMethod, optymizer);
 
             //Act
-            var resultdict = calculation.CalculateShare();
+            var resultdict = calculation.CalculateShare(1);
 
             var expecteddict = new Dictionary<string, decimal>() { { "Adam_Tomek", 1.0m }, { "Igor_Tomek", 3.0m } };
             var keylist = new List<string>() { "Adam_Tomek", "Igor_Tomek" };

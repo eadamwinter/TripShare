@@ -6,7 +6,7 @@ namespace TripShare
 {
     public interface IExpenseRepository
     {
-        List<Expense> GetAllExpenses();
+        List<Expense> GetAllExpenses(byte tableNumber);
         void AddNewExpense(Expense expense);
     }
 }

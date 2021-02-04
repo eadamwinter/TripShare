@@ -6,6 +6,6 @@ namespace TripShare
 {
     public interface ICalculation
     {
-        Dictionary<string, decimal> CalculateShare();
+        Dictionary<string, decimal> CalculateShare(byte tableNumber);
     }
 }
