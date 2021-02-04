@@ -33,9 +33,7 @@
             <label asp-for="MembersInvolved" class="col-md-6"></label>
             <div class="col-md-6">
                 <select asp-for="MembersInvolved" multiple typeof="checkbox">
-                    <option value="Adam">Adam</option>
-                    <option value="Piotr">Piotr</option>
-                    <option value="Heniek">Heniek</option>
+                    @await Component.InvokeAsync("NameSelection");
                 </select>
             </div>
         </div>
