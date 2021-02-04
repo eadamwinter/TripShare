@@ -11,11 +11,11 @@ namespace WebTripShare.Controllers
     public class ExpenseController : Controller
     {
         private readonly AppDbContext appDbContext;
-        //private readonly IExpenseRepository expenseRepository { get; set; }
-        public ExpenseController(AppDbContext appDbContext)
+        public IExpenseRepository expenseRepository { get; set; }
+        public ExpenseController(AppDbContext appDbContext, IExpenseRepository expenseRepository)
         {
             this.appDbContext = appDbContext;
-            // tutaj wsadz ExpenseRepository jak bedzie gotowe
+            this.expenseRepository = expenseRepository;
         }
         public IActionResult Add(int id)
         {
@@ -29,9 +29,8 @@ namespace WebTripShare.Controllers
         {
             if(ModelState.IsValid)
             {
-                //Expense expense = ExpenseMaker.CreateExpense(em.TableNumber, em.Name, em.Amount, em.MembersInvolved, em.Comment);
-                //IExpenseRepository expenseRepository = new ExpenseRepository(appDbContext);
-                //expenseRepository.AddNewExpense(expense);
+                Expense expense = ExpenseMaker.CreateExpense(em.TableNumber, em.Name, em.Amount, em.MembersInvolved, em.Comment);
+                expenseRepository.AddNewExpense(expense);
                 return RedirectToAction("Success");
             }
             return View(em);
@@ -46,19 +45,13 @@ namespace WebTripShare.Controllers
             return View(membersinv);
         }
 
-        public IActionResult NewExpense(byte TableNumber, [FromServices] ITableRepository tableRepository)
+        public IActionResult Details(int id)
         {
-            if (TableNumber == 0)
-            {
-                TableNumber = 1;
-            }
-            var data = tableRepository.GetTableById(TableNumber);
-            return View(data);
+            List<Expense> expenses = expenseRepository.GetAllExpenses((byte)id);
+            if (expenses == null) { return NotFound(); }
+
+            return View(expenses);
         }
 
-        public IActionResult New()
-        {
-            return View();
-        }
     }
 }

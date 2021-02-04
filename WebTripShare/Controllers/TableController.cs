@@ -13,13 +13,17 @@ namespace WebTripShare.Controllers
     {
         private readonly AppDbContext _appDbContext;
         private readonly ITableRepository _tableRepository;
+        private readonly IResultMaker _resultMaker;
+        private readonly ICalculation _calculation;
 
         Koles koles { get; set; }
 
-        public TableController(AppDbContext appDbContext, ITableRepository tableRepository)
+        public TableController(AppDbContext appDbContext, ITableRepository tableRepository, IResultMaker resultMaker, ICalculation calculation)
         {
             _appDbContext = appDbContext;
             _tableRepository = tableRepository;
+            _resultMaker = resultMaker;
+            _calculation = calculation;
         }
         public IActionResult Add()
         {
@@ -55,7 +59,13 @@ namespace WebTripShare.Controllers
         public IActionResult Info(byte id)
         {
             TableInfo info = _tableRepository.GetTableById(id);
-            return View(info);
+            if (info == null) { return NotFound(); }
+
+            var dict = _calculation.CalculateShare(id);
+            var result = _resultMaker.PrepareResult(dict);
+
+            TableViewModel data = new TableViewModel(result, info);
+            return View(data);
         }
     }
 }

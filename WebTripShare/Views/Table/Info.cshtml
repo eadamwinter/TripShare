@@ -1,36 +1,43 @@
-﻿@model TripShare.TableInfo
+﻿@model WebTripShare.Models.TableViewModel
 
-<div class="jumbotron jumbotron-fluid" style="background-color:lightgray">
-    <div class="container">
-        <h2 style="text-align:center">@Model.TableName</h2>
-        <h3>Group members:</h3>
-        <p>
-            @foreach (var member in Model.Members)
-            {
-                @member.Name
-                <span> </span>
-            }
-        </p>
-    </div>
-</div>
-
-<div class="row">
-    <table>
-        <div class="col-md-12">
-            <tr>
-                <td>Name</td>
-                <td>Amount</td>
-                <td>When</td>
-                <td>Members Involved</td>
-            </tr>
+<div class="container-fluid">
+    <div class="row" style="width:100vw">
+        <div class="col-md-12" style="width:100vw">
+            <div class="jumbotron jumbotron-fluid jumbo" style="background-color:lightgray">
+                <div class="container-fluid">
+                    <h2 style="text-align:center">@Model.tableInfo.TableName</h2><br />
+                    <h3>Group members:</h3><br />
+                    <p>
+                        @foreach (var member in Model.tableInfo.Members)
+                        {
+                            @member.Name
+                            <span> </span>
+                        }
+                    </p>
+                </div>
+            </div>
         </div>
-    </table>
-    
-</div>
+    </div>
 
-<div class="row">
-    <form>
-        <button type="submit" class="btn btn-outline-info" 
-                asp-controller="Expense" asp-action="Add" asp-route-id="@Model.TableInfoId">Add new expense</button>
-    </form>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Calculation results:</h2>
+            @foreach (var line in Model.TableResults)
+            {
+                <p>@line</p>
+            }
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form>
+                <button type="submit" class="btn btn-outline-info"
+                        asp-controller="Expense" asp-action="Add" asp-route-id="@Model.tableInfo.TableInfoId">
+                    Add new expense
+                </button>
+            </form>
+        </div>
+    </div>
 </div>

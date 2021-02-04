@@ -1,0 +1,31 @@
+﻿@model List<TripShare.Expense>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-dark table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Members Involved</th>
+                            <th scope="col">Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var data in Model)
+                        {
+                            <tr>
+                                <td>@data.Name</td>
+                                <td>@data.Amount</td>
+                                <td>@data.TimeOfExpense</td>
+                                <td>@data.NamesOfMembersInvolved</td>
+                                <td>@data.Comment</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

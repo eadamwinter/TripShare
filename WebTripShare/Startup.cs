@@ -32,7 +32,8 @@ namespace WebTripShare
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ITableRepository, TableRepository>();
-            services.AddScoped<IExpenseRepository, MockExpenseRepository>();
+            services.AddScoped<IExpenseRepository, ExpenseRepository>();
+            services.AddScoped<IMembersRepository, MembersRepository>();
             services.AddScoped<ICalculationMethod, CalculationMethod>();
             services.AddScoped<IOptymizer, Optimizer>();
             services.AddScoped<ICalculation, Calculation>();

@@ -17,7 +17,7 @@ namespace WebTripShare.Models
 
         public TableInfo GetTableById(byte id)
         {
-            return appDbContext.Tables.Include(a=>a.Members).First(f=>f.TableInfoId==id);
+            return appDbContext.Tables.Include(a=>a.Members).FirstOrDefault(f=>f.TableInfoId==id);
         }
 
         public List<TableInfo> GetTables()

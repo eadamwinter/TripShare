@@ -88,3 +88,5 @@ C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcor
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Table\Info.cshtml.g.cs
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Table\AllTables.cshtml.g.cs
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Expense\Add0.cshtml.g.cs
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Expense\Details.cshtml.g.cs
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\NameSelection\Default.cshtml.g.cs

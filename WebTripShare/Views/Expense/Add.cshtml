@@ -17,8 +17,7 @@
             <label asp-for="Name" class="col-md-6"></label>
             <div class="col-md-6">
                 <select asp-for="Name" class="form-control">
-                    <option>Adam</option>
-                    <option>Piotr</option>
+                    @await Component.InvokeAsync("NameSelection");
                 </select>
             </div>
         </div>
