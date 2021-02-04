@@ -22,7 +22,11 @@ namespace WebTripShare.Models
 
         public List<Expense> GetAllExpenses(byte tableNumber)
         {
-            return appDbContext.Expenses.Where(e => e.TableNumber == tableNumber).ToList();
+            if(appDbContext.Expenses.Any(a=>a.TableNumber==tableNumber))
+            {
+                return appDbContext.Expenses.Where(e => e.TableNumber == tableNumber).ToList();
+            }
+            return null;
         }
     }
 }

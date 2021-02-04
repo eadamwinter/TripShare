@@ -31,7 +31,7 @@ namespace WebTripShare.Controllers
             {
                 Expense expense = ExpenseMaker.CreateExpense(em.TableNumber, em.Name, em.Amount, em.MembersInvolved, em.Comment);
                 expenseRepository.AddNewExpense(expense);
-                return RedirectToAction("Success");
+                return RedirectToAction("Success", new { id = em.TableNumber });
             }
             return View(em);
         }
@@ -40,9 +40,9 @@ namespace WebTripShare.Controllers
             return View();
         }
 
-        public IActionResult Success(string membersinv)
+        public IActionResult Success(int id)
         {
-            return View(membersinv);
+            return View(id);
         }
 
         public IActionResult Details(int id)

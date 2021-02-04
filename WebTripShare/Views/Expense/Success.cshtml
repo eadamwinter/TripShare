@@ -1,11 +1,16 @@
-﻿@model string 
+﻿@model int 
 
 <h2>Gratki bo myślałem że nic z tego nie będzie ..</h2>
-<p>@Model</p>
+
 <div class="row">
-    <div class="col-md-12">
+    @if(Model!=0)
+    {
+        <div class="col-md-6">
+            <a asp-controller="Expense" asp-action="Details" asp-route-id="@Model">Back to Expenses</a>
+        </div>
+    }
 
-        <a asp-controller="Expense" asp-action="Details" asp-route-id="1">Back to Expenses</a>
-
+    <div class="col-md-6">
+        <a asp-controller="Table" asp-action="Alltables">Back to group list</a>
     </div>
 </div>
