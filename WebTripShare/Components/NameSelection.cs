@@ -15,9 +15,9 @@ namespace WebTripShare.Components
         {
             _membersrepository = membersRepository;
         }
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
-            var data = _membersrepository.GetAllMembers();
+            var data = _membersrepository.GetAllMembers(id);
             return View(data);
         }
     }

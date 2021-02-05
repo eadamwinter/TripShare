@@ -16,7 +16,7 @@ namespace TripShare
             TableInfo tableInfo = new TableInfo();
             tableInfo.TableInfoId = 1;
             tableInfo.TableName = "GorskieMalrze";
-            tableInfo.Members = mockMembersRepository.GetAllMembers().ToList();
+            tableInfo.Members = mockMembersRepository.GetAllMembers(id).ToList();
             return tableInfo;
         }
         public List<TableInfo> GetTables()

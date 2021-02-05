@@ -8,7 +8,7 @@ namespace WebTripShare.Models
 {
     public class MockMembersRepository : IMembersRepository
     {
-        public IEnumerable<MembersInfo> GetAllMembers()
+        public IEnumerable<MembersInfo> GetAllMembers(int id)
         {
             MemberMaker memberMaker = new MemberMaker();
 

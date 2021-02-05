@@ -13,9 +13,9 @@ namespace WebTripShare.Models
         {
             this.appDbContext = appDbContext;
         }
-        public IEnumerable<MembersInfo> GetAllMembers()
+        public IEnumerable<MembersInfo> GetAllMembers(int id)
         {
-            return appDbContext.Members.Where(m => m.TableNumber == 1);
+            return appDbContext.Members.Where(m => m.TableNumber == (byte)id);
         }
     }
 }

@@ -6,6 +6,6 @@ namespace TripShare
 {
     public interface IMembersRepository
     {
-        IEnumerable<MembersInfo> GetAllMembers();
+        IEnumerable<MembersInfo> GetAllMembers(int id);
     }
 }

@@ -1,16 +1,32 @@
-﻿@model int 
+﻿@model int
 
-<h2>Gratki bo myślałem że nic z tego nie będzie ..</h2>
-
-<div class="row">
-    @if(Model!=0)
-    {
-        <div class="col-md-6">
-            <a asp-controller="Expense" asp-action="Details" asp-route-id="@Model">Back to Expenses</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>You've just added new expense.</h2>
+                <h3>Choose what to do next.</h3>
+            </div>
         </div>
-    }
+        <div class="row">
+            @if (Model != 0)
+            {
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-dark" value=""
+                            onclick="location.href='@Url.Action("Add", "Expense", new { id = Model })'">
+                        Add next expense
+                    </button>
+                    <button type="submit" class="btn btn-dark" value=""
+                            onclick="location.href='@Url.Action("Details", "Expense", new { id = Model })'">
+                        View details
+                    </button>
+                </div>
+            }
 
-    <div class="col-md-6">
-        <a asp-controller="Table" asp-action="Alltables">Back to group list</a>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-dark" value=""
+                        onclick="location.href='@Url.Action("Alltables", "Table")'">
+                    Back to the group list
+                </button>
+            </div>
+        </div>
     </div>
-</div>

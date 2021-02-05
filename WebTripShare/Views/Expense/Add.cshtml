@@ -17,7 +17,7 @@
             <label asp-for="Name" class="col-md-6"></label>
             <div class="col-md-6">
                 <select asp-for="Name" class="form-control">
-                    @await Component.InvokeAsync("NameSelection");
+                    @await Component.InvokeAsync("NameSelection", new { id=(int)ViewBag.TableNumber });
                 </select>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <label asp-for="MembersInvolved" class="col-md-6"></label>
             <div class="col-md-6">
                 <select asp-for="MembersInvolved" multiple typeof="checkbox">
-                    @await Component.InvokeAsync("NameSelection");
+                    @await Component.InvokeAsync("NameSelection", new { id=(int)ViewBag.TableNumber });
                 </select>
             </div>
         </div>
