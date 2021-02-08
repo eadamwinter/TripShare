@@ -13,9 +13,9 @@ namespace TripShare
         [MaxLength(30)]
         public string TableName { get; set; }
         [Required]
-        public List<string> Names { get; set; }
-        [Required]
         [Range(2,15)]
         public byte NumberOfMembers { get; set; }
+        [Required]
+        public HashSet<string> Names { get; set; }
     }
 }

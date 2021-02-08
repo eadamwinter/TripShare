@@ -35,11 +35,18 @@ namespace WebTripShare.Controllers
 
             if (ModelState.IsValid)
             {
-                if (model.Names == null || model.Names.Count < 2 || model.Names.Count > 15 || model.Names.Contains(null))
+                if (model.Names == null || model.Names.Count < 2 || model.Names.Count > 15)
                 {
                     ModelState.AddModelError("Names", "There must be at least 2 members and no more than 15");
                     return View();
                 }
+
+                if (model.Names.Contains(null))
+                {
+                    ModelState.AddModelError("Names", "Names must be unique");
+                    return View();
+                }
+
                 foreach(var name in model.Names)
                 {
                     name.Trim();

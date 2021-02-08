@@ -33,10 +33,11 @@ namespace WebTripShare.Models
             var memberId = appDbContext.Members.Max(x => x.MembersInfoId);
 
             List<MembersInfo> ListOfMembers = new List<MembersInfo>();
-            for (int i = 0; i < model.NumberOfMembers; i++)
+
+            foreach(var name in model.Names) 
             {
                 memberId++;
-                ListOfMembers.Add(new MembersInfo() { MembersInfoId = memberId, Name = model.Names[i], TableNumber = id });
+                ListOfMembers.Add(new MembersInfo() { MembersInfoId = memberId, Name = name, TableNumber = id });
             }
 
             var tabela = new TableInfo()
