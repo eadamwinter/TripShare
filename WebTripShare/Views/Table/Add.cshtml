@@ -3,9 +3,10 @@
 
     <div class="container">
         <div class="row text-justify p-3">
-            <h3>
-                Fill the form to create a new group. There must be at least 2 Members. Remember that each name has to be unique.
-            </h3>
+            <h4>Create new group!</h4>
+            <h5>
+                Please fill the form below. You have to add at least 2 Members. Remember that each name has to be unique.
+            </h5>
         </div>
         <div class="row">
             
@@ -13,14 +14,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label asp-for="TableName">Enter the name of the group:</label>
-                            <input type="text" asp-for="TableName" value="Mikasy" />
-                            <span asp-validation-for="TableName"></span>
+                            <label asp-for="TableName">Enter the name of the group</label><br />
+                            <input type="text" asp-for="TableName" value="Mikasy" /><br />
+                            <span class="text-danger" asp-validation-for="TableName"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="NumberOfMembers">Number of members:</label>
-                            <input type="number" asp-for="NumberOfMembers" id="HowMany" value="2" />
-                            <span asp-validation-for="NumberOfMembers"></span>
+                            <label asp-for="NumberOfMembers">Number of members</label><br />
+                            <input type="number" asp-for="NumberOfMembers" id="HowMany" value="2" /><br />
+                            <span class="text-danger" asp-validation-for="NumberOfMembers"></span>
                         </div>
                     </div>
                 </div>
@@ -28,14 +29,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p>Add members</p>
-                        @for (var i = 0; i < 2; i++)
-                        {
-                        <div class="form-group">
-                            <label>Name:</label>
-                            <input type="text" asp-for="Names" />
+                        <div class="form-group pb-0">
+                            @for (var i = 0; i < 2; i++)
+                            {
+                                <label>Name:</label><br />
+                                <input type="text" asp-for="Names" /><br />
+                            }
+                            <span class="text-danger" asp-validation-for="Names"></span>
                         </div>
-                        }
-                        <span asp-validation-for="Names"></span>
                     </div>
                 </div>
 

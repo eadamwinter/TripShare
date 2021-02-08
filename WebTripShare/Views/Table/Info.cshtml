@@ -5,13 +5,15 @@
 
             <h2 style="text-align:center">@Model.tableInfo.TableName</h2>
             <h3>Group members:</h3>
-            <p>
-                @foreach (var member in Model.tableInfo.Members)
-                {
-                    @member.Name
-                    <span> </span>
-                }
-            </p>
+            
+            <table>
+                <tr>
+                    @foreach (var member in Model.tableInfo.Members)
+                    {
+                    <td class="p-3 text-info font-weight-bold">@member.Name</td>
+                    }
+                </tr>
+            </table>
 
         </div>
     </div>

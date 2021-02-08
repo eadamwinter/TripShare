@@ -33,6 +33,7 @@ namespace WebTripShare.Controllers
                 expenseRepository.AddNewExpense(expense);
                 return RedirectToAction("Success", new { id = em.TableNumber });
             }
+            ViewBag.TableNumber = em.TableNumber;
             return View(em);
         }
         public IActionResult Add0()
