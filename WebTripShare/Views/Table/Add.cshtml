@@ -1,21 +1,52 @@
-﻿<!-- model WebTripShare.Models.AddingData.Koles -->
-
-<h2>
-    Czy na pewno chcesz dodać bazę. To jest wszystko na sztywno wpisane w klasie DontUse,
-    ktora to jest w folderze AddingData
-</h2>
-<form asp-action="Add" method="post" role="form">
+﻿@model TripShare.NewTableViewModel
 
 
-    <!--    <label asp-for="isActive"></label>
-        <input asp-for="isActive" checked="checked" />
-    -->
-    @Html.TextBox("name")
-    <br /><br />
-    <!--ten checkbox zadzialal ewentualnie mozna jeszcze zrobic tak jak powyzej tylko zamiast textboxa checkbox-->
-    <br /><br />
-    <input type="checkbox" name="dupa" checked="checked" value="true"/>
+    <div class="container">
+        <div class="row text-justify p-3">
+            <h3>
+                Fill the form to create a new group. There must be at least 2 Members. Remember that each name has to be unique.
+            </h3>
+        </div>
+        <div class="row">
+            
+            <form asp-action="Add" method="post" role="form">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="TableName">Enter the name of the group:</label>
+                            <input type="text" asp-for="TableName" value="Mikasy" />
+                            <span asp-validation-for="TableName"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NumberOfMembers">Number of members:</label>
+                            <input type="number" asp-for="NumberOfMembers" id="HowMany" value="2" />
+                            <span asp-validation-for="NumberOfMembers"></span>
+                        </div>
+                    </div>
+                </div>
 
-    <label>Press this button to add data to your database.</label>
-    <input type="submit" class="btn btn-danger" value="Dont Do It !" />
-</form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Add members</p>
+                        @for (var i = 0; i < 2; i++)
+                        {
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input type="text" asp-for="Names" />
+                        </div>
+                        }
+                        <span asp-validation-for="Names"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <button class="btn btn-dark" type="submit">Create a new group!</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>

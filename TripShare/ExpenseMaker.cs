@@ -23,7 +23,7 @@ namespace TripShare
             expense.TableNumber = tableNumber;
             expense.Name = name;
             expense.Amount = amount;
-            expense.TimeOfExpense = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss");
+            expense.TimeOfExpense = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
             expense.NamesOfMembersInvolved = membersInvolved;
             expense.NumberOfMembersInvolved = (byte)membersInvolved.Split(',').ToList().Count;
             expense.Comment = comment;

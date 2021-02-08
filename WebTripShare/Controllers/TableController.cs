@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TripShare;
 using WebTripShare.Models;
-using WebTripShare.Models.AddingData;
 
 namespace WebTripShare.Controllers
 {
@@ -15,8 +15,6 @@ namespace WebTripShare.Controllers
         private readonly ITableRepository _tableRepository;
         private readonly IResultMaker _resultMaker;
         private readonly ICalculation _calculation;
-
-        Koles koles { get; set; }
 
         public TableController(AppDbContext appDbContext, ITableRepository tableRepository, IResultMaker resultMaker, ICalculation calculation)
         {
@@ -32,22 +30,39 @@ namespace WebTripShare.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(string name, bool dupa)
+        public IActionResult Add(NewTableViewModel model)
         {
 
-            if(name=="k")
+            if (ModelState.IsValid)
             {
-                if(dupa==true) { return RedirectToAction("Index", "Home"); }
-
-                return RedirectToAction("Success");
+                if (model.Names == null || model.Names.Count < 2 || model.Names.Count > 15 || model.Names.Contains(null))
+                {
+                    ModelState.AddModelError("Names", "There must be at least 2 members and no more than 15");
+                    return View();
+                }
+                foreach(var name in model.Names)
+                {
+                    name.Trim();
+                    if(name.Length<1 || name.Length>20)
+                    {
+                        ModelState.AddModelError("Names", "The name is too short or too long");
+                        return View();
+                    }
+                }
             }
-            return View();
+            else
+            {
+                return View();
+            }
+
+            TableRepository tableRepository = new TableRepository(_appDbContext);
+            tableRepository.AddNewTable(model);
+
+            return RedirectToAction("Success");
         }
 
         public IActionResult Success()
         {
-            //DontUse dontUse = new DontUse(_appDbContext);
-            //dontUse.AddTableData();
             return View();
         }
         public IActionResult AllTables()
@@ -61,8 +76,13 @@ namespace WebTripShare.Controllers
             TableInfo info = _tableRepository.GetTableById(id);
             if (info == null) { return NotFound(); }
 
-            var dict = _calculation.CalculateShare(id);
-            var result = _resultMaker.PrepareResult(dict);
+            List<string> result = null;
+
+            if(_appDbContext.Expenses.Any(x=>x.TableNumber==id))
+            {
+                var dict = _calculation.CalculateShare(id);
+                result = _resultMaker.PrepareResult(dict);
+            }
 
             TableViewModel data = new TableViewModel(result, info);
             return View(data);

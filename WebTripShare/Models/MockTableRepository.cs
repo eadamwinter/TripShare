@@ -8,6 +8,11 @@ namespace TripShare
 {
     public class MockTableRepository : ITableRepository
     {
+        public void AddNewTable(NewTableViewModel newTableViewModel)
+        {
+            throw new NotImplementedException();
+        }
+
         public TableInfo GetTableById(byte id)
         {
             MockMembersRepository mockMembersRepository = new MockMembersRepository();
