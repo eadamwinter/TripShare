@@ -195,7 +195,6 @@ C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\obj\Debug\netcoreapp3.1
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\obj\Debug\netcoreapp3.1\Testy.genruntimeconfig.cache
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1\Castle.Core.dll
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1\Moq.dll
-C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\obj\Debug\netcoreapp3.1\Testy.csproj.CoreCompileInputs.cache
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1\WebTripShare.Views.dll
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1\WebTripShare.Views.pdb
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1\appsettings.Development.json
@@ -243,3 +242,5 @@ C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1\WebTripShare.dll
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1\WebTripShare.pdb
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\obj\Debug\netcoreapp3.1\Testy.csproj.CoreCompileInputs.cache

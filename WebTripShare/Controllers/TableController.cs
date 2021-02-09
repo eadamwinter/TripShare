@@ -35,6 +35,12 @@ namespace WebTripShare.Controllers
 
             if (ModelState.IsValid)
             {
+                if(_appDbContext.Tables.Any(a=>a.TableName==model.TableName))
+                {
+                    ModelState.AddModelError("TableName", "There is already group with this name in the database");
+                    return View();
+                }
+
                 if (model.Names == null || model.Names.Count < 2 || model.Names.Count > 15)
                 {
                     ModelState.AddModelError("Names", "There must be at least 2 members and no more than 15");

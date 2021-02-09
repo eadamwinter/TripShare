@@ -7,7 +7,6 @@ namespace TripShare
 {
     public class TableMapper
     {
-        //public byte TableInfoId { get; set; }
         [Required]
         [MaxLength(50)]
         [MinLength(2)]

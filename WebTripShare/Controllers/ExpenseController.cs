@@ -29,6 +29,13 @@ namespace WebTripShare.Controllers
         {
             if(ModelState.IsValid)
             {
+                if(em.MembersInvolved.Count()==1 && em.MembersInvolved.Contains(em.Name))
+                {
+                    ModelState.AddModelError("MembersInvolved", $"Choose different member than {em.Name}");
+                    ViewBag.TableNumber = em.TableNumber;
+                    return View();
+                }
+
                 Expense expense = ExpenseMaker.CreateExpense(em.TableNumber, em.Name, em.Amount, em.MembersInvolved, em.Comment);
                 expenseRepository.AddNewExpense(expense);
                 return RedirectToAction("Success", new { id = em.TableNumber });

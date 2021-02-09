@@ -27,10 +27,20 @@ namespace WebTripShare.Models
 
         public void AddNewTable(NewTableViewModel model)
         {
-            var id = appDbContext.Tables.Max(x => x.TableInfoId);
-            id++;
 
-            var memberId = appDbContext.Members.Max(x => x.MembersInfoId);
+            byte id = 1;
+            if(appDbContext.Tables.Any())
+            {
+                id = appDbContext.Tables.Max(x => x.TableInfoId);
+                id++;
+            }
+
+            byte memberId = 1;
+            if(appDbContext.Members.Any())
+            {
+                memberId = appDbContext.Members.Max(x => x.MembersInfoId);
+            }
+            
 
             List<MembersInfo> ListOfMembers = new List<MembersInfo>();
 
