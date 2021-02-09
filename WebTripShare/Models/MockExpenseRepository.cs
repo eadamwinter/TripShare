@@ -29,5 +29,20 @@ namespace TripShare
         {
             //exprepo.AddNewExpense(expense);
         }
+
+        public void DeleteExpense(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Expense GetExpenseById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditExpense(int id, Expense expense)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,5 +8,8 @@ namespace TripShare
     {
         List<Expense> GetAllExpenses(byte tableNumber);
         void AddNewExpense(Expense expense);
+        void DeleteExpense(int id);
+        Expense GetExpenseById(int id);
+        void EditExpense(int id, Expense expense);
     }
 }

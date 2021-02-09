@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TripShare;
 using WebTripShare.Models;
@@ -53,10 +54,30 @@ namespace WebTripShare.Controllers
             return View(id);
         }
 
+        [Route("table")]
+        public IActionResult Del(int id, int table)
+        {
+            expenseRepository.DeleteExpense(id);
+            return RedirectToAction("Details", new { id = table });
+        }
+
+        public IActionResult Edit(int id)
+        {
+            Expense expense = expenseRepository.GetExpenseById(id);
+            ViewBag.Expense = expense;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(ExpenseMapper expMapper)
+        {
+            return View();
+        }
+
+        
         public IActionResult Details(int id)
         {
             List<Expense> expenses = expenseRepository.GetAllExpenses((byte)id);
-            if (expenses == null) { return NotFound(); }
 
             return View(expenses);
         }

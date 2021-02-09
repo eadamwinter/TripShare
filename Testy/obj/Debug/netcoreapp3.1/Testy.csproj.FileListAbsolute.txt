@@ -244,3 +244,4 @@ C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1\WebTripShare.pdb
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\obj\Debug\netcoreapp3.1\Testy.csproj.CoreCompileInputs.cache
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\Testy\bin\Debug\netcoreapp3.1\libman.json

@@ -28,5 +28,37 @@ namespace WebTripShare.Models
             }
             return null;
         }
+
+        public void DeleteExpense(int id)
+        {
+            var expense = appDbContext.Expenses.First(x => x.ExpenseId == id);
+            if(expense!=null)
+            {
+                appDbContext.Expenses.Remove(expense);
+                appDbContext.SaveChanges();
+            }
+            
+        }
+
+        public Expense GetExpenseById(int id)
+        {
+            return appDbContext.Expenses.First(e => e.ExpenseId == id);
+        }
+
+        public void EditExpense(int id, Expense exp)
+        {
+            Expense expense = GetExpenseById(id);
+            if(expense!=null)
+            {
+                expense.Name = exp.Name;
+                expense.NumberOfMembersInvolved = exp.NumberOfMembersInvolved;
+                expense.NamesOfMembersInvolved = exp.NamesOfMembersInvolved;
+                expense.Amount = exp.Amount;
+                expense.Comment = exp.Comment;
+
+                appDbContext.SaveChanges();
+            }
+        }
+
     }
 }

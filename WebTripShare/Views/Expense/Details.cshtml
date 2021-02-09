@@ -3,29 +3,46 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-dark table-hover">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Members Involved</th>
-                            <th scope="col">Comment</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var data in Model)
-                        {
+
+                @if (Model == null)
+                {
+                    <p>No expenses added.</p>
+                }
+                else
+                {
+                    <table class="table table-dark table-hover">
+                        <thead class="thead-light">
                             <tr>
-                                <td>@data.Name</td>
-                                <td>@data.Amount</td>
-                                <td>@data.TimeOfExpense</td>
-                                <td>@data.NamesOfMembersInvolved</td>
-                                <td>@data.Comment</td>
+                                <th scope="col">Name</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Members Involved</th>
+                                <th scope="col">Comment</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Remove</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach (var data in Model)
+                            {
+                                <tr>
+                                    <td>@data.Name</td>
+                                    <td>@data.Amount</td>
+                                    <td>@data.TimeOfExpense</td>
+                                    <td>@data.NamesOfMembersInvolved</td>
+                                    <td>@data.Comment</td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@data.ExpenseId" class="fa fa-wrench"></a>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <a asp-action="Del" asp-route-id="@data.ExpenseId" asp-route-table="@data.TableNumber" class="fa fa-times-circle"></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+
             </div>
         </div>
     </div>

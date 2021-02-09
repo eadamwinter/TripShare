@@ -1,0 +1,48 @@
+﻿@model TripShare.ExpenseMapper
+
+    <table class="table table-dark table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+                <th scope="col">Members Involved</th>
+                <th scope="col">Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>@ViewBag.Expense.Name</td>
+                    <td>@ViewBag.Expense.Amount</td>
+                    <td>@ViewBag.Expense.TimeOfExpense</td>
+                    <td>@ViewBag.Expense.NamesOfMembersInvolved</td>
+                    <td>@ViewBag.Expense.Comment</td>
+                </tr>
+        </tbody>
+    </table>
+
+
+
+    <form asp-action="ConfirmEdit" method="post" id="EditForm">
+        <table class="table table-dark table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Members Involved</th>
+                    <th scope="col">Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <td><select asp-for="Name" form="EditForm">@await Component.InvokeAsync("NameSelection", new { id = (int)ViewBag.Expense.TableNumber })</select></td>
+                    <td><input asp-for="Amount" form="EditForm"/></td>
+                    <td><select asp-for="MembersInvolved" form="EditForm" multiple>@await Component.InvokeAsync("NameSelection", new { id=(int)ViewBag.Expense.TableNumber }) </select></td>
+                    <td><input asp-for="Comment" form="EditForm"/></td>
+
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-outline-info" type="submit" form="EditForm">Edit expense</button>
+    </form>               
