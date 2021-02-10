@@ -63,15 +63,21 @@ namespace WebTripShare.Controllers
 
         public IActionResult Edit(int id)
         {
-            Expense expense = expenseRepository.GetExpenseById(id);
-            ViewBag.Expense = expense;
+            ViewBag.Expense = expenseRepository.GetExpenseById(id);
             return View();
         }
 
         [HttpPost]
-        public IActionResult Edit(ExpenseMapper expMapper)
+        public IActionResult Edit(ExpenseEdit expEdit)
         {
-            return View();
+            if(ModelState.IsValid)
+            {
+                expenseRepository.EditExpense(expEdit);
+                return RedirectToAction("Details", new { id = expEdit.TableNumber });
+            }
+
+            ViewBag.Expense = expenseRepository.GetExpenseById(expEdit.ExpenseId);
+            return View(expEdit);
         }
 
         

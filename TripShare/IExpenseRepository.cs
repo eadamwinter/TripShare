@@ -10,6 +10,6 @@ namespace TripShare
         void AddNewExpense(Expense expense);
         void DeleteExpense(int id);
         Expense GetExpenseById(int id);
-        void EditExpense(int id, Expense expense);
+        void EditExpense(ExpenseEdit expense);
     }
 }

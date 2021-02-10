@@ -31,7 +31,7 @@ namespace WebTripShare.Controllers
             return View(result);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Author()
         {
             return View();
         }

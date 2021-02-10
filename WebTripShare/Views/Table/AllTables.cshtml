@@ -1,12 +1,22 @@
-﻿@model List<TripShare.TableInfo>
+﻿@{ 
+    ViewData["Title"] = "All groups";
+}
+@model List<TripShare.TableInfo>
 
 
     <div class="jumbotron jumbotron-fluid p-5" style="background-color:lightgray">
         <div class="container">
-            <p>
-                Below You will find all groups created in application to share trip costs between its members. 
-                Please press the button "View details" for more information about each specific group.
+            <p class="text-justify">
+                Below You will find all groups created in application to share trip costs between its members.
+                Please press the button "Show results" for more information about each specific group.
             </p>
+            @if(Model.Count>1) {
+                <p class="text-justify">Currently there are @Model.Count groups in the database.</p>
+            }
+            else {
+                <p class="text-justify">Currently there is only @Model.Count group in the database.</p>
+            }
+
         </div>
     </div>
 
@@ -16,7 +26,7 @@
             {
                 
                 <div class="col-md-3 text-center border border-secondary m-2">
-                    <p>Group number @table.TableInfoId</p>
+                    <p>Group id: @table.TableInfoId</p>
                     <h4>Name: @table.TableName</h4>
                     <form>
                         <button class="btn btn-dark" asp-controller="Table" asp-action="Info" asp-route-id="@table.TableInfoId">Show results</button>

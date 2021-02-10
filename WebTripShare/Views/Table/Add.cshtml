@@ -1,53 +1,113 @@
-﻿@model TripShare.NewTableViewModel
+﻿@{ 
+    ViewData["Title"] = "New group";
+}
+
+@model TripShare.NewTableViewModel
 
 
     <div class="container">
-        <div class="row text-justify p-3">
-            <h4>Create new group!</h4>
-            <h5>
-                Please fill the form below. You have to add at least 2 Members. Remember that each name has to be unique.
-            </h5>
-        </div>
-        <div class="row">
-            
-            <form asp-action="Add" method="post" role="form">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label asp-for="TableName">Enter the name of the group</label><br />
-                            <input type="text" asp-for="TableName" value="Mikasy" /><br />
-                            <span class="text-danger" asp-validation-for="TableName"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="NumberOfMembers">Number of members</label><br />
-                            <input type="number" asp-for="NumberOfMembers" id="HowMany" value="2" /><br />
-                            <span class="text-danger" asp-validation-for="NumberOfMembers"></span>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>Add members</p>
-                        <div class="form-group pb-0">
-                            @for (var i = 0; i < 2; i++)
-                            {
-                                <label>Name:</label><br />
-                                <input type="text" asp-for="Names" /><br />
-                            }
-                            <span class="text-danger" asp-validation-for="Names"></span>
-                        </div>
-                    </div>
+            <div class="row text-justify p-4">
+                <div class="col-md-12">
+                    <h4>Create new group!</h4>
+                    <h5>
+                        Please fill the form below. You have to add at least 2 Members. Remember that each name has to be unique.
+                    </h5>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <button class="btn btn-dark" type="submit">Create a new group!</button>
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <form asp-action="Add" method="post" role="form">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4><b>Add group info</b></h4>
+                                <div class="form-group">
+                                    <label asp-for="TableName">Enter the name of the group:</label><br />
+                                    <input type="text" asp-for="TableName" value="" /><br />
+                                    <span class="text-danger" asp-validation-for="TableName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NumberOfMembers">Number of members:</label><br />
+                                    <input type="number" asp-for="NumberOfMembers" id="HowMany" value="2" readonly /><br />
+                                    <span class="text-danger" asp-validation-for="NumberOfMembers"></span>
+                                </div>
+                                <div class="form-group mt-5">
+                                    <button class="btn btn-dark" type="submit">Create a new group!</button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h4><b>Add members</b></h4>
+                                <div class="col-md-12" id="MemberCol">
+                                    @for (var i = 0; i < 2; i++)
+                                    {
+                                        <div class="form-group p-0 col-md-12">
+                                            <label>Name:</label><br />
+                                            <input type="text" asp-for="Names" value="" /><br />
+                                        </div>
+                                    }
+
+                                </div>
+                                <span class="text-danger" asp-validation-for="Names"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <h4><b>Options</b></h4>
+                                <button type="button" class="m-2" onclick="NewMember()">+ <i class="fa fa-hiking"> Add another member</i></button>
+                                <button type="button" class="m-2" onclick="RemoveMember()">- <i class="fa fa-hiking"> Remove member</i></button>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </form>
 
-        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <script>
+                function NewMember() {
+                    
+                    var members = document.getElementById("HowMany");
+                    var number = Number(members.getAttribute("value")) + 1;
+
+                    if (number != 16) {
+                        var div = document.createElement("div");
+                        div.setAttribute("id", number);
+                        div.setAttribute("class", "form-group p-0 col-md-12");
+
+                        members.setAttribute("value", number);
+
+                        var label = document.createElement("label");
+                        label.append("Name: ");
+                        var member = document.createElement("input");
+                        member.setAttribute("type", "text");
+                        member.setAttribute("id", "Names");
+                        member.setAttribute("name", "Names");
+
+
+                        var linebreak = document.createElement("br");
+                        div.appendChild(label);
+                        div.appendChild(linebreak);
+                        div.appendChild(member);
+                        document.getElementById("MemberCol").appendChild(div);
+                    }
+                }
+
+                function RemoveMember() {
+                    var members = document.getElementById("HowMany");
+                    var number = members.getAttribute("value")
+                    var div = document.getElementById(number);
+
+                    if (number != "2") {
+                        document.getElementById("HowMany").setAttribute("value", Number(number) - 1);
+                    }
+
+                    div.remove();
+                }
+            </script>
+
+
+        
     </div>

@@ -40,7 +40,7 @@ namespace TripShare
             throw new NotImplementedException();
         }
 
-        public void EditExpense(int id, Expense expense)
+        public void EditExpense(ExpenseEdit expense)
         {
             throw new NotImplementedException();
         }

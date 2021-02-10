@@ -47,9 +47,15 @@ namespace WebTripShare.Controllers
                     return View();
                 }
 
-                if (model.Names.Contains(null))
+                if (model.NumberOfMembers > model.Names.Count)
                 {
                     ModelState.AddModelError("Names", "Names must be unique");
+                    return View();
+                }
+
+                if (model.Names.Contains(null))
+                {
+                    ModelState.AddModelError("Names", "Names must be unique and have more than 1 letter");
                     return View();
                 }
 

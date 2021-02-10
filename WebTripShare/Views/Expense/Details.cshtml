@@ -1,4 +1,8 @@
-﻿@model List<TripShare.Expense>
+﻿@{ 
+    ViewData["Title"] = "Details";
+}
+
+@model List<TripShare.Expense>
 
     <div class="container">
         <div class="row">
@@ -18,8 +22,8 @@
                                 <th scope="col">Date</th>
                                 <th scope="col">Members Involved</th>
                                 <th scope="col">Comment</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Remove</th>
+                                <th scope="col" class="text-center">Edit</th>
+                                <th scope="col" class="text-center">Remove</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,7 +35,7 @@
                                     <td>@data.TimeOfExpense</td>
                                     <td>@data.NamesOfMembersInvolved</td>
                                     <td>@data.Comment</td>
-                                    <td>
+                                    <td class="text-center">
                                         <a asp-action="Edit" asp-route-id="@data.ExpenseId" class="fa fa-wrench"></a>
                                     </td>
                                     <td style="text-align:center">

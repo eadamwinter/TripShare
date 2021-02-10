@@ -45,16 +45,17 @@ namespace WebTripShare.Models
             return appDbContext.Expenses.First(e => e.ExpenseId == id);
         }
 
-        public void EditExpense(int id, Expense exp)
+        public void EditExpense(ExpenseEdit exp)
         {
-            Expense expense = GetExpenseById(id);
+            Expense expense = GetExpenseById(exp.ExpenseId);
+            Expense newExp = ExpenseMaker.CreateExpense(exp.TableNumber, exp.Name, exp.Amount, exp.MembersInvolved, exp.Comment);
             if(expense!=null)
             {
-                expense.Name = exp.Name;
-                expense.NumberOfMembersInvolved = exp.NumberOfMembersInvolved;
-                expense.NamesOfMembersInvolved = exp.NamesOfMembersInvolved;
-                expense.Amount = exp.Amount;
-                expense.Comment = exp.Comment;
+                expense.Name = newExp.Name;
+                expense.NumberOfMembersInvolved = newExp.NumberOfMembersInvolved;
+                expense.NamesOfMembersInvolved = newExp.NamesOfMembersInvolved;
+                expense.Amount = newExp.Amount;
+                expense.Comment = newExp.Comment;
 
                 appDbContext.SaveChanges();
             }
