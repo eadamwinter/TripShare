@@ -70,18 +70,24 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-.guzik {
-    background-color: DodgerBlue; /* Blue background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 12px 16px; /* Some padding */
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
+.obraz {
+    width:auto;
+    height:140px;
+    display: inline-block !important;
+}
+.obraz img {
+    max-height:100%;
+    width:auto;
+}
+.obraz i {
+    max-height:100%;
+    width:auto;
 }
 
-.guzik:hover {
-    background-color: RoyalBlue;
+.carousel-item {
+    text-align: center;
 }
+
 
 
 
