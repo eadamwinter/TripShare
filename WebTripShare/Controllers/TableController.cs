@@ -90,6 +90,25 @@ namespace WebTripShare.Controllers
             return View(tables);
         }
 
+        public IActionResult Delete(int id)
+        {
+            return View(id);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(IFormCollection collection)
+        {
+            //var id = Byte(collection["tableid"]);
+            var id = Int16.Parse(collection["tableid"]);
+            if(id!=-1)
+            {
+                _tableRepository.DeleteTable((byte)id);
+            }
+            
+            
+            return RedirectToAction("AllTables");
+        }
+
         public IActionResult Info(byte id)
         {
             TableInfo info = _tableRepository.GetTableById(id);

@@ -1,0 +1,28 @@
+﻿@model int
+@{ 
+    ViewData["Title"] = "Deleting group";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+
+            <h4>Are You sure?</h4>
+            <form asp-action="Delete" method="post">
+                <input name="tableid" value="@Model" hidden />
+                <button type="submit" class="btn btn-danger">Yes, delete!</button>
+            </form>
+            <br />
+            <form asp-action="Delete" method="post">
+                <input name="tableid" value="-1" hidden />
+                <button type="submit" class="btn btn-outline-info">No, back to group list</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -8,7 +8,7 @@ namespace TripShare
     public class ExpenseEdit
     {
         [Required]
-        public byte ExpenseId { get; set; }
+        public int ExpenseId { get; set; }
         [Required]
         public byte TableNumber { get; set; }
         [Required]

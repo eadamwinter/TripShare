@@ -13,6 +13,11 @@ namespace TripShare
             throw new NotImplementedException();
         }
 
+        public void DeleteTable(byte id)
+        {
+            throw new NotImplementedException();
+        }
+
         public TableInfo GetTableById(byte id)
         {
             MockMembersRepository mockMembersRepository = new MockMembersRepository();

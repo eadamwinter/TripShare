@@ -3,7 +3,7 @@
     <div class="jumbotron jumbotron-fluid p-1" style="background-color:lightgray">
         <div class="container-fluid">
 
-            <h2 style="text-align:center">@Model.tableInfo.TableName</h2>
+            <h1 style="text-align:center">@Model.tableInfo.TableName</h1>
             <h3>Group members:</h3>
             
             <table>
@@ -21,8 +21,9 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-12">
-                <h2>Calculation results:</h2>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h2 class="text-center">Calculation results:</h2>
                 @if (Model.TableResults == null)
                 {
                     <p>So far no expense added.</p>
@@ -35,17 +36,24 @@
                     }
                 }
             </div>
+            <div class="col-md-4"></div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <button type="submit" class="btn btn-outline-info" value=""
+                <button type="submit" class="btn btn-outline-info m-2" value=""
                         onclick="location.href='@Url.Action("Add", "Expense", new { id = Model.tableInfo.TableInfoId })'">
                     Add new expense
                 </button>
-                <button type="submit" class="btn btn-outline-info" value=""
+                <button type="submit" class="btn btn-outline-info m-2" value=""
                         onclick="location.href='@Url.Action("Details", "Expense", new { id = Model.tableInfo.TableInfoId })'">
                     View details
+                </button>
+            </div>
+            <div class="col-md-12 m-2">
+                <button type="submit" class="btn btn-danger" value=""
+                        onclick="location.href='@Url.Action("Delete", "Table", new { id = Model.tableInfo.TableInfoId })'">
+                    Delete group!
                 </button>
             </div>
         </div>

@@ -25,6 +25,16 @@ namespace WebTripShare.Models
             return appDbContext.Tables.ToList();
         }
 
+        public void DeleteTable(byte id)
+        {
+            var table = appDbContext.Tables.Include(i => i.Members).FirstOrDefault(f => f.TableInfoId == id);
+            if(table!=null)
+            {
+                appDbContext.Tables.Remove(table);
+                appDbContext.SaveChanges();
+            }
+        }
+
         public void AddNewTable(NewTableViewModel model)
         {
 

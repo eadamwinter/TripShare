@@ -8,6 +8,7 @@ namespace TripShare
     {
         List<TableInfo> GetTables();
         TableInfo GetTableById(byte id);
+        void DeleteTable(byte id);
         void AddNewTable(NewTableViewModel newTableViewModel);
     }
 }
