@@ -1,13 +1,20 @@
 ﻿
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
+<div class="container-fluid p-2">
+    <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
             <h2>Congratulations, you've just created a group.</h2>
-            <p class="text-justify">Now you can add expenses and view share results. Go to the list of all the groups
-            by pressing <i>All groups</i> in the navigation bar to find and checkout your group.</p>
+            <h5>
+                Now you can add expenses and view share results. 
+                Go to the list of groups to find and checkout your group.
+            </h5>
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-dark" value=""
+                    onclick="location.href='@Url.Action("Alltables", "Table")'">
+                Go to the group list
+            </button>
         </div>
     </div>
-
 </div>

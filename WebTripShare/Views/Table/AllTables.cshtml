@@ -4,17 +4,17 @@
 @model List<TripShare.TableInfo>
 
 
-    <div class="jumbotron jumbotron-fluid p-5" style="background-color:lightgray">
+    <div class="jumbotron jumbotron-fluid p-5" style="background-color:burlywood; color:white;">
         <div class="container">
-            <p class="text-justify">
-                Below You will find all groups created in application to share trip costs between its members.
+            <h3 class="text-justify">
+                Below You will find all created groups. 
                 Please press the button "Show results" for more information about each specific group.
-            </p>
+            </h3>
             @if(Model.Count>1) {
-                <p class="text-justify">Currently there are @Model.Count groups in the database.</p>
+                <h6 class="text-justify">Currently there are @Model.Count groups in the database.</h6>
             }
             else {
-                <p class="text-justify">Currently there is only @Model.Count group in the database.</p>
+                <h6 class="text-justify">Currently there is only @Model.Count group in the database.</h6>
             }
 
         </div>
@@ -33,6 +33,7 @@
                     </form>
                 </div>
             }
+            
         </div>
     </div>
 

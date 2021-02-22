@@ -12,16 +12,43 @@ a {
   color: #0366d6;
 }
 
+.table {
+    margin:0 !important;
+}
+
+.back-color {
+    background-color:whitesmoke !important;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
 
+.navbar {
+    background-color:burlywood !important;
+}
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.text-color {
+    color: lightslategray !important;
+}
+
+.text-color:hover {
+    color:white;
+}
+
+.nav-item:hover {
+    color:white !important;
+}
+
+.nav-link:hover {
+    color:white !important;
 }
 
 /* Sticky footer styles
@@ -59,15 +86,28 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: url("../img/stripes.jpg");
+    background-repeat: repeat;
 }
+
+.base {
+    background-color: whitesmoke;
+    min-height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    /*margin-left:20px;
+    margin-right:20px;*/
+}
+
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+  background-color:burlywood;
 }
 
 .obraz {

@@ -4,29 +4,30 @@
 
 @model int
 
-    <div class="container">
+    <div class="container p-2">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 text-center">
                 <h2>You've just added new expense.</h2>
                 <h3>Choose what to do next.</h3>
             </div>
         </div>
-        <div class="row">
-            @if (Model != 0)
-            {
-                <div class="col-md-6">
+        <div class="row p-2">
+            <div class="col-md-12">
+                @if (Model != 0)
+                {
                     <button type="submit" class="btn btn-dark" value=""
-                            onclick="location.href='@Url.Action("Add", "Expense", new { id = Model })'">
-                        Add next expense
+                            onclick="location.href='@Url.Action("Info", "Table", new { id = Model })'">
+                        Show results
                     </button>
                     <button type="submit" class="btn btn-dark" value=""
                             onclick="location.href='@Url.Action("Details", "Expense", new { id = Model })'">
                         View details
                     </button>
-                </div>
-            }
-
-            <div class="col-md-6">
+                    <button type="submit" class="btn btn-dark" value=""
+                            onclick="location.href='@Url.Action("Add", "Expense", new { id = Model })'">
+                        Add next expense
+                    </button>
+                }
                 <button type="submit" class="btn btn-dark" value=""
                         onclick="location.href='@Url.Action("Alltables", "Table")'">
                     Back to the group list

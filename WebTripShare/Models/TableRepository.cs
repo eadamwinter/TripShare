@@ -27,7 +27,26 @@ namespace WebTripShare.Models
 
         public void DeleteTable(byte id)
         {
-            var table = appDbContext.Tables.Include(i => i.Members).FirstOrDefault(f => f.TableInfoId == id);
+            IEnumerable<Expense> expenses = appDbContext.Expenses.Where(e => e.TableNumber == id);
+            if (expenses != null)
+            {
+                foreach (var expense in expenses)
+                {
+                    appDbContext.Expenses.Remove(expense);
+                }
+            }
+
+            IEnumerable<MembersInfo> members = appDbContext.Members.Where(m => m.TableNumber == id);
+            if(members != null)
+            {
+                foreach (var member in members)
+                {
+                    appDbContext.Members.Remove(member);
+                }
+            }
+            
+
+            var table = appDbContext.Tables.FirstOrDefault(f => f.TableInfoId == id);
             if(table!=null)
             {
                 appDbContext.Tables.Remove(table);

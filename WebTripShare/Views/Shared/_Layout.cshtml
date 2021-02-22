@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebTripShare</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -22,21 +22,24 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav navbar-dark flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Table" asp-action="Add">Create new group</a>
+                            <a class="nav-link text-color" asp-area="" asp-controller="Table" asp-action="Add">Create new group</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Table" asp-action="Alltables">All groups</a>
+                            <a class="nav-link text-color" asp-area="" asp-controller="Table" asp-action="Alltables">All groups</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <!--<div class="container">-->
-    <main role="main" class="pb-3">
+
+   
+    <main role="main" class="base">
         @RenderBody()
     </main>
-    <!--</div>-->
+    <div style="min-height:16px"></div>
+    
+          
 
     <footer class="border-top footer text-muted">
         <div class="container">
