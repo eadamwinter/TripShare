@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Old expense values</h2>
+                <h2 class="mt-2 mb-2">Old expense values</h2>
                 <table class="table table-dark table-hover">
                     <thead class="thead-light">
                         <tr>
@@ -27,8 +27,8 @@
             </div>
 
             <div class="col-md-12">
-                <h2>New values</h2>
-                <form asp-action="Edit" method="post" id="EditForm">
+                <h2 class="mt-2 mb-2">New values</h2>
+                <form asp-action="Edit" method="post" id="EditForm" class="form-group">
                     <input type="hidden" asp-for="ExpenseId" value="@ViewBag.Expense.ExpenseId" form="EditForm" />
                     <input type="hidden" asp-for="TableNumber" value="@ViewBag.Expense.TableNumber" form="EditForm" />
                     <table class="table table-dark table-hover">
@@ -45,30 +45,37 @@
                             <tr>
                                 
                                 <td>
-                                    <select asp-for="Name" form="EditForm">@await Component.InvokeAsync("NameSelection", new { id = (int)ViewBag.Expense.TableNumber })</select>
+                                    <select class="selectpicker form-control" onchange="changemember()" id="member" asp-for="Name" form="EditForm">
+                                        <option selected disabled hidden></option>
+                                        @await Component.InvokeAsync("NameSelection", new { id = (int)ViewBag.Expense.TableNumber })
+                                    </select>
                                     <span class="text-danger" asp-validation-for="Name"></span>
                                 </td>
                                 <td>
-                                    <input asp-for="Amount" form="EditForm" /><br />
+                                    <input asp-for="Amount" form="EditForm" class="form-control" /><br />
                                     <span class="text-danger" asp-validation-for="Amount"></span>
                                 </td>
                                 <td>
-                                    <input type="text" value="@ViewBag.Expense.TimeOfExpense" readonly />
+                                    <input type="text" value="@ViewBag.Expense.TimeOfExpense" disabled readonly class="form-control" />
                                 </td>
                                 <td>
-                                    <select asp-for="MembersInvolved" form="EditForm" multiple>@await Component.InvokeAsync("NameSelection", new { id = (int)ViewBag.Expense.TableNumber }) </select>
+                                    <select class="selectpicker form-control" id="members" asp-for="MembersInvolved" form="EditForm" multiple>
+                                        @await Component.InvokeAsync("NameSelection", new { id = (int)ViewBag.Expense.TableNumber }) 
+                                    </select>
                                     <br /><span class="text-danger" asp-validation-for="MembersInvolved"></span>
                                 </td>
                                 <td>
-                                    <input asp-for="Comment" form="EditForm" /><br />
+                                    <input asp-for="Comment" form="EditForm" class="form-control" /><br />
                                     <span class="text-danger" asp-validation-for="Comment"></span>
                                 </td>
 
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-outline-dark" type="submit" form="EditForm">Edit expense</button>
+                    <button class="btn btn-outline-dark m-4" type="submit" form="EditForm">Edit expense</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>

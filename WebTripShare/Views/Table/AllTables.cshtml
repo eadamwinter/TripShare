@@ -25,13 +25,28 @@
             @foreach (var table in Model)
             {
                 
-                <div class="col-md-3 text-center border border-secondary m-2">
-                    <p>Group id: @table.TableInfoId</p>
-                    <h4>Name: @table.TableName</h4>
-                    <form>
-                        <button class="btn btn-dark" asp-controller="Table" asp-action="Info" asp-route-id="@table.TableInfoId">Show results</button>
-                    </form>
+            <div class="col-3 border border-secondary rounded m-2 p-2" style="background-color:burlywood">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12"><h4 class="text-center" style="overflow-wrap: break-word"><b>@table.TableName</b></h4></div>
+                    </div>
+                    <div class="row justify-content-around">
+                            <div style="display:inline-block" class="p-1">
+                                <button type="submit" class="btn btn-dark"
+                                        onclick="location.href='@Url.Action("Info", "Table", new { id = @table.TableInfoId })'">
+                                    Show results
+                                </button>
+                            </div>
+                            <div style="display:inline-block" class="p-1">
+                                <button type="submit" class="btn btn-dark" value=""
+                                        onclick="location.href='@Url.Action("Details", "Expense", new { id = @table.TableInfoId })'">
+                                    View details
+                                </button>
+                            </div>
+                    </div>
                 </div>
+            </div>
+
             }
             
         </div>

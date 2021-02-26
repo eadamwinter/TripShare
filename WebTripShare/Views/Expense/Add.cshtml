@@ -7,18 +7,20 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-
             <h2>Add a new expense to the database.</h2>
+        </div>
+
+        <div class="col-md-7 col-12">
             <form asp-action="Add" method="post" role="form">
                 <div class="form-group">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <input type="hidden" asp-for="TableNumber" class="form-control" value="@ViewBag.TableNumber" />
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="Name" class="col-md-6">Name: (Choose who pays the cost)</label>
-                    <div class="col-md-6">
+                    <label asp-for="Name" class="col-md-12">Name: (Choose who pays the cost)</label>
+                    <div class="col-md-12">
                         <select asp-for="Name" id="member" onchange="changemember();" class="form-control selectpicker">
                             <option selected disabled hidden></option>
                             @await Component.InvokeAsync("NameSelection", new { id = (int)ViewBag.TableNumber });
@@ -28,8 +30,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="Amount" class="col-md-6">Amount: (How much is the cost)</label>
-                    <div class="col-md-6">
+                    <label asp-for="Amount" class="col-md-12">Amount: (How much is the cost)</label>
+                    <div class="col-md-12">
                         <input asp-for="Amount" class="form-control" />
                         <span class="text-danger" asp-validation-for="Amount"></span>
                     </div>
@@ -37,8 +39,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="MembersInvolved" class="col-md-6">Members involved: (Choose which member shares the cost)</label>
-                    <div class="col-md-6">
+                    <label asp-for="MembersInvolved" class="col-md-12">Members involved: (Choose which member shares the cost)</label>
+                    <div class="col-md-12">
                         <select asp-for="MembersInvolved" id="members" class="selectpicker" multiple>
                             @await Component.InvokeAsync("NameSelection", new { id = (int)ViewBag.TableNumber });
                         </select>
@@ -49,8 +51,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="Comment" class="col-md-6">Comment: (This field is optional)</label>
-                    <div class="col-md-6">
+                    <label asp-for="Comment" class="col-md-12">Comment: (This field is optional)</label>
+                    <div class="col-md-12">
                         <input asp-for="Comment" class="form-control" />
                         <span class="text-danger" asp-validation-for="Comment"></span>
                     </div>
@@ -58,30 +60,15 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="cold-md-offset-2 col-md-6">
+                    <div class="col-md-offset-2 col-md-12">
                         <input type="submit" class="btn btn-success" value="Add expense" />
                     </div>
                 </div>
 
             </form>
         </div>
+        <div class="col-md-5 col-12"><img class="img-fluid" src="~/img/moneygreen.png" /></div>
     </div>
 </div>
 
-<script>
-    function changemember() {
-        var name = document.getElementById("member").value;
-        var members = document.getElementById("members");
-
-        for (var i = 0; i < members.options.length; i++) {
-            members.options[i].removeAttribute("disabled");
-
-            if (members.options[i].text == name) {
-                members.options[i].disabled = true;
-                $("#members :disabled").prop('selected', false);
-            }
-        }
-
-        $('#members').selectpicker('refresh');
-    }
-</script>
+<script src="~/js/site.js" asp-append-version="true"></script>

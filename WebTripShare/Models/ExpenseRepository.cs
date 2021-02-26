@@ -42,7 +42,7 @@ namespace WebTripShare.Models
 
         public Expense GetExpenseById(int id)
         {
-            return appDbContext.Expenses.First(e => e.ExpenseId == id);
+            return appDbContext.Expenses.FirstOrDefault(e => e.ExpenseId == id);
         }
 
         public void EditExpense(ExpenseEdit exp)

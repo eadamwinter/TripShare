@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using TripShare;
+using System.Diagnostics;
 using WebTripShare.Models;
 
 namespace WebTripShare.Controllers
@@ -13,22 +8,20 @@ namespace WebTripShare.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IResultMaker resultMaker;
-        private readonly ICalculation calculation;
 
-        public HomeController(ILogger<HomeController> logger, IResultMaker resultMaker, ICalculation calculation)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            this.resultMaker = resultMaker;
-            this.calculation = calculation;
+        }
+
+        public IActionResult HowItWorks()
+        {
+            return View();
         }
 
         public IActionResult Index()
         {
-            var dict = calculation.CalculateShare(1);
-            var result = resultMaker.PrepareResult(dict);
-
-            return View(result);
+            return View();
         }
 
         public IActionResult Author()

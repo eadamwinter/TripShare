@@ -1,4 +1,16 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
+function changemember() {
+    var name = document.getElementById("member").value;
+    var members = document.getElementById("members");
 
-// Write your JavaScript code.
+    for (var i = 0; i < members.options.length; i++) {
+        members.options[i].removeAttribute("disabled");
+
+        if (members.options[i].text == name) {
+            members.options[i].disabled = true;
+            $("#members :disabled").prop('selected', false);
+        }
+    }
+
+    $('#members').selectpicker('refresh');
+}

@@ -1,44 +1,37 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model List<string>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center p-3">Welcome in TripShare!</h2>
 
-                <p class="text-justify">It's a simple application that allows to calculate expenses shared by a group.</p>
+<div class="container">
 
-                <p class="text-justify">
-                    First of all you have to create your own group, add its name and members. You can
-                    do it by pressing <i>Create group</i> in the navigation bar. For now the application doesn't allow to add/delete/modify
-                    members of already created groups. Sorry for the inconvenience.
-                </p>
-
-                <p class="text-justify">
-                    Once you've created your group you will be able to add some expenses.
-                    Information that are included in every expense are:
-                    <ul class="font-weight-bold">
-                        <li>Name: the person who pays the cost</li>
-                        <li>Amount: the amount of the expense will be shared among chosen members</li>
-                        <li>Date and time: this field will be generated automatically</li>
-                        <li>Members invloved: names of the members you want to share the cost with</li>
-                        <li>Comment: this is optional field to write down some note</li>
-                    </ul>
-                </p>
-
-                <p class="text-justify">
-                    Next please go to <i>All groups</i>, choose one and press
-                    <i>Show results</i>. There you can find calculated share results. They are telling in a clean and simple
-                    manner which member or members own how much and to whom. For more specyfics you can also check
-                    <i>View details</i> There you will see the whole list of added expenses.
-                </p>
-
-                <p class="text-justify">
-                    I hope you will enjoy TripShare. You can also visit <i>Author</i> in the footer for
-                    more information about the author and other applications.
-                </p>
-
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center p-3">Welcome in TripShare!</h2>
         </div>
     </div>
+
+    <div class="row mt-4">
+            <div class="col-md-2 offset-md-3 col-sm-12 col-12" style="text-align:center">
+                <img class="obraz" src="~/img/money.png" />
+            </div>
+
+            <div class="col-md-7 col-sm-12 col-12">
+                <ul class="text-md-left text-center" style="list-style-type:none;">
+                    <li><h4>Create groups ..</h4></li>
+                    <li><h4>.. add expenses ..</h4></li>
+                    <li><h4>.. share it between members ..</h4></li>
+                    <li><h4>.. calculate results ..</h4></li>
+                </ul>
+            </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="offset-md-2"></div>
+        <div class="col-md-10 col-12">
+            <h3>.. and have fun</h3>
+            <p class="text-justify">If you are here for the first time, visit <i>How it works</i> page. 
+            You can go there via the navigation bar.</p>
+        </div>
+    </div>
+
+</div>

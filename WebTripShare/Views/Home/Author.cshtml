@@ -39,7 +39,7 @@
 
                         <div class="carousel-item">
                             <div class="obraz">
-                                <img src="~/img/jezykc.jpg" alt="C#">
+                                <img src="~/img/Csharp_Logo.png" alt="C#">
                             </div>
                         </div>
                     </div>
@@ -58,13 +58,44 @@
 
             <div class="col-md-4"></div>
         </div>
+
+        
+
+
         <div class="row">
             <div class="col-md-12">
 
                 <h4>Contact info</h4>
                 <p>Email: eadamwinter@gmail.com</p>
                 <link>GitHub: <a href="https://github.com/eadamwinter">https://github.com/eadamwinter</a>
-               
+
             </div>
+
+            <div class="col-md-12 mt-1">
+                <div id="license" onclick="showinfo()">
+                    <h5 style="display:inline">Show license information</h5>
+                </div>
+                <div id="content" style="display:none">
+                    <p>The content on this website is licensed under a MIT License.</p>
+                    <p class="text-justify">
+                        Images used in TripShare:
+                        <ul>
+                            <li>
+                                Andres15alvarez, license: CC-BY-SA 4.0 (https://commons.wikimedia.org/wiki/File:Csharp_Logo.png)
+                            </li>
+                            <li>
+                                pinclipart.com, license: Personal Use
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+
         </div>
     </div>
+
+<script>
+    function showinfo() {
+        $('#content').slideToggle();
+    }
+</script>

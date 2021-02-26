@@ -93,3 +93,4 @@ C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\bin\Debug\netcor
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Expense\Edit.cshtml.g.cs
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Home\Author.cshtml.g.cs
 C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Table\Delete.cshtml.g.cs
+C:\Users\Adam PRO-ROB\source\gitrepos\GitTripShare\WebTripShare\obj\Debug\netcoreapp3.1\Razor\Views\Home\HowItWorks.cshtml.g.cs

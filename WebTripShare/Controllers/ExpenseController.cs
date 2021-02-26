@@ -63,8 +63,13 @@ namespace WebTripShare.Controllers
 
         public IActionResult Edit(int id)
         {
-            ViewBag.Expense = expenseRepository.GetExpenseById(id);
-            return View();
+            Expense expense = expenseRepository.GetExpenseById(id);
+            if(expense != null)
+            {
+                ViewBag.Expense = expense;
+                return View();
+            }
+            return NotFound();
         }
 
         [HttpPost]

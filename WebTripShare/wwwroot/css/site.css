@@ -89,6 +89,7 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     background-image: url("../img/stripes.jpg");
+    /*background-image: url("../img/yellowpattern.jpg");*/
     background-repeat: repeat;
 }
 
@@ -128,7 +129,22 @@ body {
     text-align: center;
 }
 
+#license {
+    text-align: center;
+    background-color: #e5eecc;
+    border: solid 1px #c3c3c3;
+} 
 
+#license:hover {
+    cursor:pointer;
+}
+
+#content {
+    display: none;
+    padding: 5px;
+    background-color: #e5eecc;
+    border: solid 1px #c3c3c3;
+}
 
 
 
