@@ -8,13 +8,15 @@
         <div class="container">
 
             <h1 style="text-align:center">@Model.tableInfo.TableName</h1>
-            <h3>Group members:</h3>
+            <h3 onclick="GetPersonal('all')" style="cursor:pointer">Group members:</h3>
             
             <table>
                 <tr>
                     @foreach (var member in Model.tableInfo.Members)
                     {
-                    <td class="p-3 font-weight-bold text-color">@member.Name</td>
+                        <td class="p-3 font-weight-bold text-color" onclick="GetPersonal('@member.Name')">
+                            <p class="text-color nav-link" style="cursor:pointer">@member.Name</p>
+                        </td>
                     }
                 </tr>
             </table>
@@ -27,17 +29,19 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <h2 class="text-center">Calculation results:</h2>
+                <h2 class="text-center mb-2">Calculation results:</h2>
                 @if (Model.TableResults == null)
                 {
                     <p>So far no expense added.</p>
                 }
                 else
                 {
-                    @foreach (var line in Model.TableResults)
-                    {
-                        <p>@line</p>
-                    }
+                    <div id="GroupResults">
+                        @foreach (var line in Model.TableResults)
+                        {
+                            <p>@line</p>
+                        }
+                    </div>
                 }
             </div>
             <div class="col-md-4"></div>
@@ -59,4 +63,32 @@
                 </button>
             </div>
         </div>
+
+        <script>
+            function GetPersonal(name) {
+                $.ajax({
+                type: "GET",
+                url: "../SpecificInfo",
+                data: { name: name },
+                success: function (response) {
+
+                    //making output
+                    var div = document.createElement("div");
+                    div.setAttribute("id", "GroupResults");
+
+                    for (var i = 0; i < response.length; i++) {
+                        var p = document.createElement("p");
+                        p.innerHTML = response[i];
+                        div.appendChild(p);
+                    }
+
+                    var results = document.getElementById("GroupResults");
+                    results.replaceWith(div);
+                }
+                });
+            }
+
+        </script>
+
+
     </div>

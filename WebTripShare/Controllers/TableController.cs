@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using TripShare;
 using WebTripShare.Models;
 
@@ -16,16 +15,18 @@ namespace WebTripShare.Controllers
         private readonly IResultMaker _resultMaker;
         private readonly ICalculation _calculation;
 
-        public TableController(AppDbContext appDbContext, ITableRepository tableRepository, IResultMaker resultMaker, ICalculation calculation)
+        protected ActualResults _result { get; set; }
+
+        public TableController(AppDbContext appDbContext, ITableRepository tableRepository, IResultMaker resultMaker, ICalculation calculation, ActualResults actualResults)
         {
             _appDbContext = appDbContext;
             _tableRepository = tableRepository;
             _resultMaker = resultMaker;
             _calculation = calculation;
+            _result = actualResults;
         }
         public IActionResult Add()
         {
-            //koles = new Koles();
             return View();
         }
 
@@ -35,7 +36,7 @@ namespace WebTripShare.Controllers
 
             if (ModelState.IsValid)
             {
-                if(_appDbContext.Tables.Any(a=>a.TableName==model.TableName))
+                if (_appDbContext.Tables.Any(a => a.TableName == model.TableName))
                 {
                     ModelState.AddModelError("TableName", "There is already group with this name in the database");
                     return View();
@@ -59,10 +60,10 @@ namespace WebTripShare.Controllers
                     return View();
                 }
 
-                foreach(var name in model.Names)
+                foreach (var name in model.Names)
                 {
                     name.Trim();
-                    if(name.Length<1 || name.Length>20)
+                    if (name.Length < 1 || name.Length > 20)
                     {
                         ModelState.AddModelError("Names", "The name is too short or too long");
                         return View();
@@ -86,7 +87,7 @@ namespace WebTripShare.Controllers
         }
         public IActionResult AllTables()
         {
-            List<TableInfo> tables =_tableRepository.GetTables();
+            List<TableInfo> tables = _tableRepository.GetTables();
             return View(tables);
         }
 
@@ -98,14 +99,14 @@ namespace WebTripShare.Controllers
         [HttpPost]
         public IActionResult Delete(IFormCollection collection)
         {
-            //var id = Byte(collection["tableid"]);
+
             var id = Int16.Parse(collection["tableid"]);
-            if(id!=-1)
+            if (id != -1)
             {
                 _tableRepository.DeleteTable((byte)id);
             }
-            
-            
+
+
             return RedirectToAction("AllTables");
         }
 
@@ -116,14 +117,34 @@ namespace WebTripShare.Controllers
 
             List<string> result = null;
 
-            if(_appDbContext.Expenses.Any(x=>x.TableNumber==id))
+            if (_appDbContext.Expenses.Any(x => x.TableNumber == id))
             {
                 var dict = _calculation.CalculateShare(id);
                 result = _resultMaker.PrepareResult(dict);
             }
 
+            _result.resultList = result;
+
             TableViewModel data = new TableViewModel(result, info);
             return View(data);
+        }
+
+        public IActionResult SpecificInfo(string name)
+        {
+            if(name=="all")
+            {
+                return Ok(_result.resultList);
+            }
+            
+            List<string> personalExpenses = new List<string>();
+            foreach (var line in _result.resultList)
+            {
+                if (line.Contains(name))
+                {
+                    personalExpenses.Add(line);
+                }
+            }
+            return Ok(personalExpenses);
         }
     }
 }

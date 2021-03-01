@@ -38,6 +38,7 @@ namespace WebTripShare
             services.AddScoped<IOptymizer, Optimizer>();
             services.AddScoped<ICalculation, Calculation>();
             services.AddScoped<IResultMaker, ResultMaker>();
+            services.AddSingleton<ActualResults>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
