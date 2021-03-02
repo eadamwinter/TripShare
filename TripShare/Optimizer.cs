@@ -1,31 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace TripShare
 {
     public class Optimizer : IOptymizer
     {
+
+        // Final optimization of dictionary by checking if some people can take others debts to their accounts
         public Dictionary<string, decimal> OptimizeDict(Dictionary<string, decimal> dict)
         {
             List<string> keylist = dict.Keys.ToList();
-            foreach(var key in keylist)
+            foreach (var key in keylist)
             {
-                if(!dict.ContainsKey(key)) { continue; }
+                if (!dict.ContainsKey(key)) { continue; }
 
                 string[] subkey = key.Split('_');
-                foreach(var otherkey in keylist)
+                foreach (var otherkey in keylist)
                 {
 
-                    if(otherkey == key) { continue; }
-                    if(!dict.ContainsKey(otherkey)) { continue; }
+                    if (otherkey == key) { continue; }
+                    if (!dict.ContainsKey(otherkey)) { continue; }
 
                     string[] subotherkey = otherkey.Split('_');
-                    if(subkey[1] == subotherkey[0])
+                    if (subkey[1] == subotherkey[0])
                     {
                         string testkey = subkey[0] + "_" + subotherkey[1];
-                        if(dict.ContainsKey(testkey))
+                        if (dict.ContainsKey(testkey))
                         {
                             if (dict[key] < dict[otherkey])
                             {
@@ -34,7 +34,7 @@ namespace TripShare
                                 dict.Remove(key);
                                 break;
                             }
-                            if (dict[key]==dict[otherkey])
+                            if (dict[key] == dict[otherkey])
                             {
                                 dict[testkey] += dict[otherkey];
                                 dict.Remove(otherkey);

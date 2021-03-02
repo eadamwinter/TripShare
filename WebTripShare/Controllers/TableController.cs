@@ -131,12 +131,28 @@ namespace WebTripShare.Controllers
 
         public IActionResult SpecificInfo(string name)
         {
+            List<string> personalExpenses = new List<string>();
+
+            if (_result.resultList==null)
+            {
+                if(name=="all")
+                {
+                    personalExpenses.Add("None of members is involved in any expense.");
+                }
+                else
+                {
+                    personalExpenses.Add($"{name} is no involved in any expense.");
+                }
+                
+                return Ok(personalExpenses);
+            }
+
             if(name=="all")
             {
                 return Ok(_result.resultList);
             }
             
-            List<string> personalExpenses = new List<string>();
+            
             foreach (var line in _result.resultList)
             {
                 if (line.Contains(name))

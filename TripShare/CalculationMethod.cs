@@ -11,7 +11,7 @@ namespace TripShare
         public Dictionary<string, decimal> CalculateMembersExpenses(Calculation calculation)
         {
 
-            //Utworzenie slownika(pustego) ktory bedzie stopniowo zapelniany danymi
+            // Creating an empty dictionary which will be consequently filling with data about each expense from database
             Dictionary<string, decimal> MemberToMemberDict = new Dictionary<string, decimal>();
             IEnumerable<Expense> expenses = calculation.expenseRepository.GetAllExpenses(calculation.TableNumber);
 
@@ -43,13 +43,13 @@ namespace TripShare
             return MemberToMemberDict;
         }
 
+        // Creating a key for the dictionary -> name1 (person who owns money to person with name2), underline, name2
         public string CreateStringForDictionary(List<string> membersInvolved, string name, byte which)
         {
-            //Tworzenie nazwy ktora bedzie dodana do slownika
-            //return expense.NamesOfMembersInvolved[which]+"_"+expense.Name;
             return membersInvolved[which] + "_" + name;
         }
 
+        // Optimizing dict by removing spare elements
         public Dictionary<string, decimal> OptimizeDict(Dictionary<string, decimal> dict)
         {
             List<string> keyList = dict.Keys.ToList();
@@ -89,6 +89,5 @@ namespace TripShare
             return newstring;
         }
 
-    //end of Class
     }
 }

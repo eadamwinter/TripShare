@@ -4,7 +4,7 @@
 
 @model WebTripShare.Models.TableViewModel
 
-    <div class="jumbotron jumbotron-fluid p-1" style="background-color:burlywood; color:white;">
+    <div class="jumbotron jumbotron-fluid p-0" style="background-color:burlywood; color:white;">
         <div class="container">
 
             <h1 style="text-align:center">@Model.tableInfo.TableName</h1>
@@ -14,7 +14,7 @@
                 <tr>
                     @foreach (var member in Model.tableInfo.Members)
                     {
-                        <td class="p-3 font-weight-bold text-color" onclick="GetPersonal('@member.Name')">
+                        <td class="pl-3 pr-3 font-weight-bold text-color" onclick="GetPersonal('@member.Name')">
                             <p class="text-color nav-link" style="cursor:pointer">@member.Name</p>
                         </td>
                     }
@@ -32,7 +32,9 @@
                 <h2 class="text-center mb-2">Calculation results:</h2>
                 @if (Model.TableResults == null)
                 {
-                    <p>So far no expense added.</p>
+                    <div id="GroupResults">
+                        <p>So far no expense added.</p>
+                    </div>
                 }
                 else
                 {

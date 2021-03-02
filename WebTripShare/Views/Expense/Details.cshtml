@@ -45,6 +45,13 @@
                             }
                         </tbody>
                     </table>
+
+                    <div class="p-2 text-center">
+                        <button type="submit" class="btn btn-dark" value=""
+                                onclick="location.href='@Url.Action("Info", "Table", new { id = Model[0].TableNumber })'">
+                            Show results
+                        </button>
+                    </div>
                 }
 
             </div>
