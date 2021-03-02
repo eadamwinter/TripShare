@@ -1,6 +1,7 @@
 # TripShare
-<p>This is my web application based on an app that I had on my phone to share costs.
-I was intrested how it works so I decided to write one on my own.</p>
+
+<p>My web application based on an app that once I was using on my phone to share costs of some mountain trip.
+I was intrested how it works so I decided to write one on my own using .NET Core 3.1.</p>
 
 <p>TripShare allows to add group of friends, add expenses and then calculate the results (debts between members of the group). There is also a possibility to edit
 or remove expenses and groups.</p>
@@ -52,5 +53,5 @@ During the work on this project I practiced :
 </ol>
 
 <p>
-  Code you can find in TripShare project in classes Calculation, CalculationMethod and Optimizer.
+  <b>Code you can find in TripShare project in classes Calculation, CalculationMethod and Optimizer.</b>
 </p>
