@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-md-12">
                     
-                    <form asp-action="Add" method="post" role="form">
+                    <form id="formularz" asp-action="Add" method="post" role="form">
 
                         <div class="row">
                             <div class="col-md-4">
@@ -36,7 +36,7 @@
                                     <span class="text-danger" asp-validation-for="NumberOfMembers"></span>
                                 </div>
                                 <div class="form-group mt-5">
-                                    <button class="btn btn-dark" type="submit">Create a new group!</button>
+                                    <button class="btn btn-dark" onclick="disable_button(this)" type="submit">Create a new group!</button>
                                 </div>
                             </div>
 
@@ -112,3 +112,4 @@
 
         
     </div>
+    <script src="~/js/wylacznik.js" asp-append-version="true"></script>

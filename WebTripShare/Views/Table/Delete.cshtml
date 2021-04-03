@@ -1,5 +1,5 @@
 ﻿@model int
-@{ 
+@{
     ViewData["Title"] = "Deleting group";
 }
 
@@ -9,9 +9,9 @@
         <div class="col-md-12 text-center">
 
             <h4>Are You sure?</h4>
-            <form asp-action="Delete" method="post">
+            <form id="formularz" asp-action="Delete" method="post">
                 <input name="tableid" value="@Model" hidden />
-                <button type="submit" class="btn btn-danger">Yes, delete!</button>
+                <button type="submit" onclick="disable_button(this)" class="btn btn-danger">Yes, delete!</button>
             </form>
             <br />
             <form asp-action="Delete" method="post">
@@ -23,6 +23,7 @@
     </div>
 </div>
 
+<script src="~/js/wylacznik.js" asp-append-version="true"></script>
 
 
 

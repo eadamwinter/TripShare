@@ -11,7 +11,7 @@
         </div>
 
         <div class="col-md-7 col-12">
-            <form asp-action="Add" method="post" role="form">
+            <form id="formularz" asp-action="Add" method="post" role="form">
                 <div class="form-group">
                     <div class="col-md-12">
                         <input type="hidden" asp-for="TableNumber" class="form-control" value="@ViewBag.TableNumber" />
@@ -61,7 +61,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-12">
-                        <input type="submit" class="btn btn-success" value="Add expense" />
+                        <input type="submit" onclick="disable_button(this)" class="btn btn-success" value="Add expense" />
                     </div>
                 </div>
 
@@ -72,3 +72,4 @@
 </div>
 
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/wylacznik.js" asp-append-version="true"></script>
